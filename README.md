@@ -1,4 +1,4 @@
-# autotube
+# Autotube website
 
 ## Build Setup
 
