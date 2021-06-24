@@ -58,6 +58,7 @@
           >
             <v-spacer />
             <v-btn
+              class="white--text"
               color="primary"
               :href="card.link"
             >
