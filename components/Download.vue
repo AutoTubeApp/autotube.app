@@ -72,8 +72,6 @@
 </template>
 
 <script>
-const yaml = require('js-yaml')
-
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 
 export default {
@@ -104,21 +102,18 @@ export default {
   },
 
   async fetch () {
-    await Promise.all([
-      this.getLatest('linux'),
-      this.getLatest('mac'),
-      this.getLatest('windows')]
-    )
+    // get latest packages
+    await this.getLatest()
   },
 
   methods: {
-    async getLatest (os) {
-      let filename
-      if (os === 'windows') { filename = 'latest.yml' } else { filename = `latest-${os}.yml` }
-      const latest = await this.$axios.$get(`${repoBaseURL}${filename}`)
-      const parsed = yaml.load(latest)
-      this.cards[os].filename = parsed.path
-      this.cards[os].link = `${repoBaseURL}${parsed.path}`
+    async getLatest () {
+      const latest = await this.$axios.$get('/api/latest-packages')
+      const oss = ['linux', 'mac', 'windows']
+      oss.forEach((os) => {
+        this.cards[os].filename = latest[os]
+        this.cards[os].link = `${repoBaseURL}${latest[os]}`
+      })
     }
   }
 }
