@@ -72,7 +72,10 @@
 </template>
 
 <script>
+import { getOs } from '@/lib/getOs'
+
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
+const oss = ['linux', 'mac', 'windows']
 
 export default {
   name: 'Download',
@@ -106,10 +109,16 @@ export default {
     await this.getLatest()
   },
 
+  mounted () {
+    const userOs = getOs()
+    oss.forEach((os) => {
+      this.cards[os].selected = os === userOs
+    })
+  },
+
   methods: {
     async getLatest () {
       const latest = await this.$axios.$get('/api/latest-packages')
-      const oss = ['linux', 'mac', 'windows']
       oss.forEach((os) => {
         this.cards[os].filename = latest[os]
         this.cards[os].link = `${repoBaseURL}${latest[os]}`
