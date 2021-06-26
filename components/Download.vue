@@ -34,7 +34,7 @@
               cols="12"
               xs="12"
               sm="4"
-              class="d-flex justify-center align-center pa-0"
+              class="d-flex  pa-0"
             >
               <v-img
                 :src="card.src"
