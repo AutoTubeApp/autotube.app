@@ -17,7 +17,7 @@
         type="warning"
         elevation="2"
       >
-        Work in progress: this site is currently under construction use it at your own risk
+        🚧 🚧 Work in progress: this site is currently under construction use, it at your own risk! 🚧 🚧
       </v-alert>
     </v-row>
   </div>
