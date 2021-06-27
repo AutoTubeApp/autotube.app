@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="display">
     <v-row class="d-flex">
       <v-row
         v-if="$fetchState.pending"
@@ -94,6 +94,7 @@ export default {
   name: 'Download',
   data () {
     return {
+      display: false,
       cards: {
         mac: {
           src: '/img/apple.svg',
@@ -131,9 +132,14 @@ export default {
 
   methods: {
     async getLatest () {
-      const latest = await this.$axios.$get('/api/latest-packages')
+      let latest
+      try {
+        latest = await this.$axios.$get('/api/latest-packages')
+      } catch (e) {
+        return
+      }
+      this.display = true
       oss.forEach((os) => {
-        // this.cards[os].filename = latest[os]
         this.cards[os].link = `${repoBaseURL}${latest[os]}`
       })
     }

@@ -2,12 +2,15 @@ const app = require('express')()
 const yaml = require('js-yaml')
 const axios = require('axios')
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
+
+// local var
 const cache = {}
 
 // return last package
 app.get('/latest-packages', async (req, res) => {
   const key = 'latestPackages'
   const ttl = 3600
+
   // in cache
   if (Object.keys(cache).includes(key)) {
     const value = cache[key]
@@ -16,7 +19,20 @@ app.get('/latest-packages', async (req, res) => {
       return
     }
   }
-  // pas en cache
+
+  // pas en cache (ce qui ne devrait pas arriver sauf si le daemon plante)
+  try {
+    const r = await getAllLatest()
+    res.json(r)
+  } catch (e) {
+    res.status(500).json(`"error": ${e} `)
+  }
+})
+
+// get all latest and populate cache
+const getAllLatest = async () => {
+  console.log('get all latest called')
+  const key = 'latestPackages'
   const [l, m, w] = await Promise.all([
     getLatest('linux'),
     getLatest('mac'),
@@ -34,9 +50,7 @@ app.get('/latest-packages', async (req, res) => {
     ts: Math.floor(Date.now() / 1000),
     data: r
   }
-
-  res.json(r)
-})
+}
 
 // get latest
 const getLatest = async (os) => {
@@ -45,5 +59,8 @@ const getLatest = async (os) => {
   const latest = await axios.get(`${repoBaseURL}${filename}`)
   return yaml.load(latest.data)
 }
+
+// daemon
+getAllLatest().then(() => setInterval(async () => await getAllLatest(), 3000000))
 
 module.exports = app
