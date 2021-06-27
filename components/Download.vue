@@ -91,6 +91,7 @@ const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 const oss = ['linux', 'mac', 'windows']
 
 export default {
+
   name: 'Download',
   data () {
     return {
@@ -133,13 +134,18 @@ export default {
     // await this.getLatest()
   },
 
+  watch: {
+    '$route.query': '$fetch'
+  },
+
   mounted () {
     const userOs = getOs()
     oss.forEach((os) => {
       this.cards[os].selected = os === userOs
     })
-  },
+  }
 
+  /*
   methods: {
     async getLatest () {
       let latest
@@ -154,6 +160,8 @@ export default {
       })
     }
   }
+
+   */
 }
 </script>
 
