@@ -3,14 +3,24 @@
     <v-app-bar
       app
     >
-      <v-icon
-        class="mr-2"
-        large
-        color="primary"
-      >
-        mdi-youtube
-      </v-icon>
-      <v-toolbar-title v-text="title" />
+      <nuxtLink to="/" exact class="d-flex">
+        <v-icon
+          class="mr-2"
+          large
+          color="primary"
+        >
+          mdi-youtube
+        </v-icon>
+      </nuxtLink>
+      <v-toolbar-title class="mr-10 text--white" v-text="title" />
+
+      <nuxtLink to="/" exact class="mr-3">
+        <span>Home</span>
+      </nuxtLink>
+
+      <nuxtLink to="/docs/">
+        <span>Documentation</span>
+      </nuxtLink>
 
       <v-spacer />
       <v-btn
@@ -52,5 +62,11 @@ export default {
 <style>
 a {
   color: darkgray!important;
+  text-decoration: none;
 }
+
+a.nuxt-link-active {
+  color: white!important;
+}
+
 </style>

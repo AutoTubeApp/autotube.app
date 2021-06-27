@@ -10,6 +10,16 @@
     <v-row>
       <Download />
     </v-row>
+    <v-row justify="center" class="mt-15 d-flex">
+      <v-alert
+        border="left"
+        colored-border
+        type="warning"
+        elevation="2"
+      >
+        Work in progress: this site is currently under construction use it at your own risk
+      </v-alert>
+    </v-row>
   </div>
 </template>
 
