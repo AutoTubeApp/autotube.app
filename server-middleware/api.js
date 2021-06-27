@@ -14,7 +14,8 @@ app.get('/latest-packages', async (req, res) => {
   // in cache
   if (Object.keys(cache).includes(key)) {
     const value = cache[key]
-    if (value.ts + ttl > Math.floor(Date.now() / 1000)) {
+    console.log(value)
+    if (value.linux && value.mac && value.windows && (value.ts + ttl > Math.floor(Date.now() / 1000))) {
       res.json(value.data)
       return
     }
