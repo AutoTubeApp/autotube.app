@@ -31,7 +31,6 @@ app.get('/latest-packages', async (req, res) => {
 
 // get all latest and populate cache
 const getAllLatest = async () => {
-  console.log('get all latest called')
   const key = 'latestPackages'
   const [l, m, w] = await Promise.all([
     getLatest('linux'),
