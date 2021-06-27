@@ -119,8 +119,18 @@ export default {
   },
 
   async fetch () {
+    let latest
+    try {
+      latest = await this.$axios.$get('/api/latest-packages')
+    } catch (e) {
+      return
+    }
+    this.display = true
+    oss.forEach((os) => {
+      this.cards[os].link = `${repoBaseURL}${latest[os]}`
+    })
     // get latest packages
-    await this.getLatest()
+    // await this.getLatest()
   },
 
   mounted () {
