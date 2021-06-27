@@ -13,9 +13,10 @@ app.get('/latest-packages', async (req, res) => {
 
   // in cache
   if (Object.keys(cache).includes(key)) {
+    // console.log('in cache')
     const value = cache[key]
-    console.log(value)
-    if (value.linux && value.mac && value.windows && (value.ts + ttl > Math.floor(Date.now() / 1000))) {
+    // console.log(value)
+    if (value.data.linux && value.data.mac && value.data.windows && (value.ts + ttl > Math.floor(Date.now() / 1000))) {
       res.json(value.data)
       return
     }
