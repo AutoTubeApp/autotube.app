@@ -87,9 +87,9 @@
 <script>
 import { getOs } from '@/lib/getOs'
 
-// const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
+const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
 // const server = 'http://localhost:3000'
-const server = ''
+// const server = ''
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 const oss = ['linux', 'mac', 'windows']
 

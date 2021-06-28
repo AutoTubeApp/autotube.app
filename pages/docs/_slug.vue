@@ -36,9 +36,9 @@ export default {
     params,
     redirect
   }) {
-    // const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
+    const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
     // const server = 'http://localhost:3000'
-    const server = ''
+    // const server = ''
 
     if (!params.slug) {
       try {
