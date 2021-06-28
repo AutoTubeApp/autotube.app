@@ -35,8 +35,10 @@ export default {
     params,
     redirect
   }) {
+    const dev = process.env.NODE_ENV !== 'production'
+    const server = dev ? 'http://localhost:3000' : 'https://autotube.app'
     if (!params.slug) {
-      redirect(302, '/docs/introduction')
+      redirect(302, `${server}/docs/introduction`)
     }
     const article = await $content('docs', params.slug).fetch()
 
