@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="toc && article">
     <v-row>
       <v-col
         id="toc"
@@ -20,13 +20,14 @@
         </v-list-item>
       </v-col>
       <v-col>
-        <h1>{{ article.title }}</h1>
+        <h1>
+          {{ article.title }}
+        </h1>
         <nuxt-content :document="article" />
       </v-col>
     </v-row>
   </v-container>
 </template>
-
 <script>
 
 export default {
@@ -35,10 +36,19 @@ export default {
     params,
     redirect
   }) {
-    const dev = process.env.NODE_ENV !== 'production'
-    const server = dev ? 'http://localhost:3000' : 'https://autotube.app'
+    const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
     if (!params.slug) {
-      redirect(302, `${server}/docs/introduction`)
+      try {
+        await redirect(302, `${server}/docs/introduction`)
+        return
+      } catch (e) {
+        return
+        // do nothing is to avoid error
+        // a0417b4.js:2 Uncaught (in promise) Error: ERR_REDIRECT
+        // le problème c'est qu'on demande au routeur de venir ici pour ensuite
+        // faire un redirect "direct"
+        // push('/route') && redirect
+      }
     }
     const article = await $content('docs', params.slug).fetch()
 
@@ -46,12 +56,20 @@ export default {
       .only(['slug', 'path'])
       .sortBy('index')
       .fetch()
-
     return { article, toc }
   },
-  head () {
+
+  data () {
     return {
-      title: this.article.title,
+      toc: null,
+      article: null
+    }
+  },
+  head () {
+    if (this.article === null) { return }
+    return {
+
+      title: this.article ? this.article.title : '',
       meta: [
         {
           hid: 'description',
@@ -61,6 +79,7 @@ export default {
       ]
     }
   },
+
   mounted () {
   }
 

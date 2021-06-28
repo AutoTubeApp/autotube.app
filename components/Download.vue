@@ -87,10 +87,7 @@
 <script>
 import { getOs } from '@/lib/getOs'
 
-const dev = process.env.NODE_ENV !== 'production'
-const server = dev ? 'http://localhost:3000' : 'https://autotube.app'
-console.log(server)
-
+const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 const oss = ['linux', 'mac', 'windows']
 
@@ -148,24 +145,6 @@ export default {
       this.cards[os].selected = os === userOs
     })
   }
-
-  /*
-  methods: {
-    async getLatest () {
-      let latest
-      try {
-        latest = await this.$axios.$get('/api/latest-packages')
-      } catch (e) {
-        return
-      }
-      this.display = true
-      oss.forEach((os) => {
-        this.cards[os].link = `${repoBaseURL}${latest[os]}`
-      })
-    }
-  }
-
-   */
 }
 </script>
 
