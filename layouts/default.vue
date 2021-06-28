@@ -18,7 +18,7 @@
         <span>Home</span>
       </nuxtLink>
 
-      <nuxtLink to="/docs/">
+      <nuxtLink to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('docs')}">
         <span>Documentation</span>
       </nuxtLink>
 
