@@ -87,6 +87,10 @@
 <script>
 import { getOs } from '@/lib/getOs'
 
+const dev = process.env.NODE_ENV !== 'production'
+const server = dev ? 'http://localhost:3000' : 'https://autotube.app'
+console.log(server)
+
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 const oss = ['linux', 'mac', 'windows']
 
@@ -122,7 +126,7 @@ export default {
   async fetch () {
     let latest
     try {
-      latest = await this.$axios.$get('/api/latest-packages')
+      latest = await this.$axios.$get(`${server}/api/latest-packages`)
     } catch (e) {
       return
     }
