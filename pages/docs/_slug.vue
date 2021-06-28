@@ -36,7 +36,10 @@ export default {
     params,
     redirect
   }) {
-    const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
+    // const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
+    // const server = 'http://localhost:3000'
+    const server = ''
+
     if (!params.slug) {
       try {
         await redirect(302, `${server}/docs/introduction`)

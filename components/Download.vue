@@ -87,7 +87,9 @@
 <script>
 import { getOs } from '@/lib/getOs'
 
-const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
+// const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
+// const server = 'http://localhost:3000'
+const server = ''
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 const oss = ['linux', 'mac', 'windows']
 
@@ -131,13 +133,11 @@ export default {
     oss.forEach((os) => {
       this.cards[os].link = `${repoBaseURL}${latest[os]}`
     })
-    // get latest packages
-    // await this.getLatest()
   },
 
-  watch: {
+  /* watch: {
     '$route.query': '$fetch'
-  },
+  }, */
 
   mounted () {
     const userOs = getOs()
