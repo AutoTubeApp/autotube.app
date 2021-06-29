@@ -21,6 +21,23 @@
         <span>🚧 🚧 Work in progress: this site is currently under construction use, it at your own risk! 🚧 🚧</span>
       </v-alert>
     </v-row>
+    <v-row justify="center" class="mt-11 d-flex">
+      <v-col
+        cols="12"
+        class="text-center"
+      >
+        <iframe
+          width="600px"
+          height="338px"
+          src="https://wg.toorop.fr/autotube/embed.html"
+          title="autotube demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+        <p>AutoTube demo  </p>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
