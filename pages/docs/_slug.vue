@@ -3,8 +3,10 @@
     <v-row>
       <v-col
         id="toc"
-        cols="2"
-        class="pa-1 pt-3 mr-2 pr-3"
+        cols="12"
+        md="3"
+        lg="2"
+        class="pa-1 pt-3 mr-2 pr-3 d-xs-flex d-sm-block"
       >
         <v-list-item
           v-for=" t in toc"
