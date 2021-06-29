@@ -1,0 +1,7 @@
+name = "autotube-get-version"
+type = "webpack"
+
+account_id = "474c23d765721d277fb1b2d65ecde2ac"
+workers_dev = true
+route = ""
+zone_id = ""
