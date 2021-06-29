@@ -5,7 +5,7 @@
       border="top"
       colored-border
       type="error"
-      elevation="2"
+      elevation="12"
       prominent
     >
       <v-row align="center">

@@ -94,7 +94,7 @@ export default {
 
 <style>
 h1 {
-  color: #1565C0;
+  color: #1976D2;
 }
 #toc {
   border-right-style: solid;

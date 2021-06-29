@@ -12,12 +12,13 @@
     </v-row>
     <v-row justify="center" class="mt-5 d-flex">
       <v-alert
-        border="left"
+        class="mt-10 pt-6"
+        border="top"
         colored-border
         type="warning"
-        elevation="2"
+        elevation="8"
       >
-        🚧 🚧 Work in progress: this site is currently under construction use, it at your own risk! 🚧 🚧
+        <span>🚧 🚧 Work in progress: this site is currently under construction use, it at your own risk! 🚧 🚧</span>
       </v-alert>
     </v-row>
   </div>
