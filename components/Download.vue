@@ -71,6 +71,7 @@
 
 <script>
 import { getOs } from '@/lib/getOs'
+import { mapActions } from 'vuex'
 
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 const wkGetVersion = 'https://autotube-get-version.dppst.workers.dev/'
@@ -115,15 +116,18 @@ export default {
   },
 
   methods: {
-    async getVersion () {
-      // todo afficher erreur
-      const r = await this.$axios.get(wkGetVersion).catch((e) => {
-        console.log(e)
-      })
-      this.version = r.data.version
-      this.cards.mac.link = `${repoBaseURL}autotube-${this.version}.dmg`
-      this.cards.windows.link = `${repoBaseURL}autotube Setup ${this.version}.exe`
-      this.cards.linux.link = `${repoBaseURL}autotube-${this.version}.AppImage`
+    ...mapActions(['alertShow']),
+    async  getVersion () {
+      await this.$axios.get(wkGetVersion)
+        .then((r) => {
+          this.version = r.data.version
+          this.cards.mac.link = `${repoBaseURL}autotube-${this.version}.dmg`
+          this.cards.windows.link = `${repoBaseURL}autotube Setup ${this.version}.exe`
+          this.cards.linux.link = `${repoBaseURL}autotube-${this.version}.AppImage`
+        })
+        .catch((e) => {
+          this.alertShow({ msg: e, type: 'error' })
+        })
     }
   }
 

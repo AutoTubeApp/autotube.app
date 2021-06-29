@@ -34,6 +34,7 @@
     </v-app-bar>
     <v-main>
       <v-container>
+        <Alert />
         <nuxt keep-alive />
       </v-container>
     </v-main>
@@ -50,7 +51,9 @@
 </template>
 
 <script>
+import Alert from '@/components/Alert'
 export default {
+  components: { Alert },
   data () {
     return {
       title: 'AutoTube'
