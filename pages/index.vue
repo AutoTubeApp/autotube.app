@@ -10,7 +10,7 @@
     <v-row>
       <Download />
     </v-row>
-    <v-row justify="center" class="mt-15 d-flex">
+    <v-row justify="center" class="mt-5 d-flex">
       <v-alert
         border="left"
         colored-border

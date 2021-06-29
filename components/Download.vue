@@ -1,25 +1,7 @@
 <template>
-  <v-container v-if="display">
+  <v-container>
     <v-row class="d-flex">
-      <v-row
-        v-if="$fetchState.pending"
-        class="d-flex"
-      >
-        <v-col
-          id="loading"
-          cols="12"
-          sm="12"
-          class="d-flex justify-center align-center mt-10"
-        >
-          <v-progress-circular
-            :size="80"
-            :width="7"
-            color="primary"
-            indeterminate
-          />
-        </v-col>
-      </v-row>
-      <v-row v-if="!$fetchState.pending" class="d-flex mt-5 justify-center">
+      <v-row class="d-flex mt-5 justify-center">
         <v-col
           v-for="card in cards"
           :key="card.title"
@@ -59,15 +41,9 @@
                 xs="8"
                 class="d-flex flex-row justify-end align-center pa-0 pt-2 pt-xl-0"
               >
-                <!--
-                <span
-                  class="text-left text-xl-center pt-xl-0"
-                >
-                  {{ card.filename }}</span>
-                  -->
-                <!--<v-spacer /> -->
                 <span class="d-flex justify-end ">
                   <v-btn
+                    :disabled="card.link === ''"
                     class="white--text mb-3 mr-2 mt-xl-3 mr-xl-4 text-right"
                     color="primary"
                     :href="card.link"
@@ -81,16 +57,23 @@
         </v-col>
       </v-row>
     </v-row>
+    <v-row class="d-flex">
+      <v-col
+        v-if="version!== ''"
+        cols="12"
+        class="text-center mt-3"
+      >
+        Latest Version: {{ version }}
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import { getOs } from '@/lib/getOs'
 
-// const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
-// const server = 'http://localhost:3000'
-const server = ''
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
+const wkGetVersion = 'https://autotube-get-version.dppst.workers.dev/'
 const oss = ['linux', 'mac', 'windows']
 
 export default {
@@ -98,7 +81,7 @@ export default {
   name: 'Download',
   data () {
     return {
-      display: false,
+      version: '',
       cards: {
         mac: {
           src: '/img/apple.svg',
@@ -122,29 +105,28 @@ export default {
     }
   },
 
-  async fetch () {
-    let latest
-    try {
-      latest = await this.$axios.$get(`${server}/api/latest-packages`)
-    } catch (e) {
-      return
-    }
-    this.display = true
-    oss.forEach((os) => {
-      this.cards[os].link = `${repoBaseURL}${latest[os]}`
-    })
-  },
-
-  /* watch: {
-    '$route.query': '$fetch'
-  }, */
-
   mounted () {
+    // get last version
+    this.getVersion()
     const userOs = getOs()
     oss.forEach((os) => {
       this.cards[os].selected = os === userOs
     })
+  },
+
+  methods: {
+    async getVersion () {
+      // todo afficher erreur
+      const r = await this.$axios.get(wkGetVersion).catch((e) => {
+        console.log(e)
+      })
+      this.version = r.data.version
+      this.cards.mac.link = `${repoBaseURL}autotube-${this.version}.dmg`
+      this.cards.windows.link = `${repoBaseURL}autotube Setup ${this.version}.exe`
+      this.cards.linux.link = `${repoBaseURL}autotube-${this.version}.AppImage`
+    }
   }
+
 }
 </script>
 
