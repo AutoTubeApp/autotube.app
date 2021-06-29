@@ -21,14 +21,14 @@
         <span>🚧 🚧 Work in progress: this site is currently under construction use, it at your own risk! 🚧 🚧</span>
       </v-alert>
     </v-row>
-    <v-row justify="center" class="mt-11 d-flex">
+    <v-row v-resize="onResize" justify="center" class="mt-11 d-flex">
       <v-col
         cols="12"
         class="text-center"
       >
         <iframe
-          width="600px"
-          height="338px"
+          :width="iframeWidth +'px'"
+          :height="iframeWidth * (9/16) + 'px'"
           src="https://wg.toorop.fr/autotube/embed.html"
           title="autotube demo"
           frameborder="0"
@@ -50,7 +50,16 @@ export default {
   },
   data () {
     return {
-      snackbar: true
+      iframeWidth: 800
+    }
+  },
+  mounted () {
+    this.onResize()
+  },
+  methods: {
+    onResize () {
+      this.iframeWidth = 0.6 * window.innerWidth
+      if (this.iframeWidth > 1200) { this.iframeWidth = 1200 }
     }
   }
 }
