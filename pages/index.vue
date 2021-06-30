@@ -69,7 +69,7 @@ export default {
     }
   },
   mounted () {
-    this.onResize()
+    setTimeout(this.onResize, 500)
   },
   methods: {
     onResize () {
