@@ -51,8 +51,8 @@ export default {
   },
   data () {
     return {
-      title: 'AutoTube - publish your videos yourself',
-      description: 'AutoTube allows you to simply encode and publish your videos on the web',
+      title: 'AutoTube - Publish your videos yourself.',
+      description: 'AutoTube allows you to simply encode and publish your videos on the web.',
       iframeWidth: 800
     }
   },
