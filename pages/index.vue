@@ -29,7 +29,7 @@
         <iframe
           :width="iframeWidth +'px'"
           :height="iframeWidth * (9/16) + 'px'"
-          src="https://wg.toorop.fr/autotube/embed.html"
+          src="https://v.autotube.app/autotube/embed.html"
           title="autotube demo"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
