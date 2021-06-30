@@ -17,7 +17,7 @@ export default {
     },
     image: {
       type: String,
-      default: 'card.png'
+      default: '/card.png'
     }
   },
 
