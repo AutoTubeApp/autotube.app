@@ -1,6 +1,6 @@
 ---
 index: 0
-title: Introduction
+title: What is AutoTube ?
 description: Autotube is a tool made to publish yourself yours videos
 next: installation
 ---

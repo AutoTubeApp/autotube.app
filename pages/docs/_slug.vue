@@ -1,35 +1,39 @@
 <template>
-  <v-container v-if="toc && article">
-    <v-row>
-      <v-col
-        id="toc"
-        cols="12"
-        md="3"
-        lg="2"
-        class="pa-1 pt-3 mr-2 pr-3 d-xs-flex d-sm-block"
-      >
-        <v-list-item
-          v-for=" t in toc"
-          :key="t.slug"
-          nuxt
-          :to="t.path"
+  <div>
+    <v-container v-if="toc && article">
+      <SocialHead :title="'Autotube - ' + article.title" :description="article.description" />
+      <v-row>
+        <v-col
+          id="toc"
+          cols="12"
+          md="3"
+          lg="2"
+          class="pa-1 pt-3 mr-2 pr-3 d-xs-flex d-sm-block"
         >
-          <v-list-item-content>
-            <v-list-item-title class="text-capitalize">
-              {{ t.slug }}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-col>
-      <v-col>
-        <h1>
-          {{ article.title }}
-        </h1>
-        <nuxt-content :document="article" />
-      </v-col>
-    </v-row>
-  </v-container>
+          <v-list-item
+            v-for=" t in toc"
+            :key="t.slug"
+            nuxt
+            :to="t.path"
+          >
+            <v-list-item-content>
+              <v-list-item-title class="text-capitalize">
+                {{ t.slug }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-col>
+        <v-col>
+          <h1>
+            {{ article.title }}
+          </h1>
+          <nuxt-content :document="article" />
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
+
 <script>
 
 export default {

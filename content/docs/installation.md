@@ -1,7 +1,7 @@
 ---
 index: 1
-title: Install Autotube
-description: How to install AutoTube and start publishing your video online.
+title: How to install Autotube
+description: Install AutoTube and start publishing your videos online.
 prev: introduction
 next: configuration
 ---

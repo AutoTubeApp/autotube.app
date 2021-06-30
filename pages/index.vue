@@ -1,9 +1,10 @@
 <template>
   <div>
+    <SocialHead :title="title" :description="description" />
     <v-row justify="center" align="center" class="mt-2">
       <v-col cols="12">
         <div class="text-center">
-          <h1>Yours videos, yours choices !</h1>
+          <h1>Your videos, your choices !</h1>
         </div>
       </v-col>
     </v-row>
@@ -50,7 +51,21 @@ export default {
   },
   data () {
     return {
+      title: 'AutoTube - publish your videos yourself',
+      description: 'AutoTube allows you to simply encode and publish your videos on the web',
       iframeWidth: 800
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description
+        }
+      ]
     }
   },
   mounted () {

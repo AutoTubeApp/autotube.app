@@ -1,7 +1,7 @@
 ---
 index: 2
 title: Configure Autotube
-description: How to configure AutoTube and start publishing your video online.
+description: How to configure AutoTube and start publishing your videos online.
 prev: installation
 ---
 ## Mora deorum ducar an recepta dederat alimentaque
