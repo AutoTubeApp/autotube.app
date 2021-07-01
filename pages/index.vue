@@ -17,7 +17,7 @@
         md="8"
       >
         <v-alert
-          class="mt-10 pt-6"
+          class="mt-6 pt-6"
           border="top"
           colored-border
           type="warning"
@@ -27,22 +27,44 @@
         </v-alert>
       </v-col>
     </v-row>
+    <v-row v-resize="onResize" justify="center" class="mt-5 d-flex text-center">
+      <v-col
+        cols="12"
+        md="12"
+        class="text-center"
+      >
+        <h2 class="mb-4">
+          AutoTube demo
+        </h2>
+        <iframe
+          :width="iframeWidth +'px'"
+          :height="iframeWidth * (9/16) + 'px'"
+          src="https://v.autotube.app/autotube-demo/embed.html"
+          title="AutoTube demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </v-col>
+    </v-row>
     <v-row v-resize="onResize" justify="center" class="mt-11 d-flex text-center">
       <v-col
         cols="12"
         md="12"
         class="text-center"
       >
+        <h2 class="mb-4">
+          AutoTube full presentation (in 🥖 🧀 🍷).
+        </h2>
         <iframe
           :width="iframeWidth +'px'"
           :height="iframeWidth * (9/16) + 'px'"
           src="https://v.autotube.app/autotube/embed.html"
-          title="autotube demo"
+          title="AutoTube presentation en français"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
-        <p>AutoTube demo </p>
       </v-col>
     </v-row>
   </v-container>
@@ -80,8 +102,8 @@ export default {
   methods: {
     onResize () {
       this.iframeWidth = 0.6 * window.innerWidth
-      if (this.iframeWidth > 1200) {
-        this.iframeWidth = 1200
+      if (this.iframeWidth > 800) {
+        this.iframeWidth = 800
       }
     }
   }
