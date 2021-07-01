@@ -98,7 +98,7 @@ export default {
 
 <style>
 h1 {
-  color: #1976D2;
+  color: #1E88E5;
 }
 #toc {
   border-right-style: solid;
@@ -111,7 +111,7 @@ h1 {
 }
 
 .nuxt-content h2 {
-  color: #1976D2;
+  color: #1E88E5;
   padding-bottom: .5rem;
   margin-bottom: 1rem;
   margin-top: 1.5rem;

@@ -7,7 +7,7 @@
         <v-icon
           class="mr-2"
           large
-          color="primary"
+          color="#1E88E5"
         >
           mdi-youtube
         </v-icon>

@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <v-container>
     <SocialHead :title="title" :description="description" />
     <v-row justify="center" align="center" class="mt-2">
       <v-col cols="12">
         <div class="text-center">
-          <h1>Your videos, your choices !</h1>
+          <h1>Encode, publish and host your videos yourself</h1>
         </div>
       </v-col>
     </v-row>
@@ -12,19 +12,25 @@
       <Download />
     </v-row>
     <v-row justify="center" class="mt-5 d-flex">
-      <v-alert
-        class="mt-10 pt-6"
-        border="top"
-        colored-border
-        type="warning"
-        elevation="8"
-      >
-        <span>🚧 🚧 Work in progress: this site is currently under construction use, it at your own risk! 🚧 🚧</span>
-      </v-alert>
-    </v-row>
-    <v-row v-resize="onResize" justify="center" class="mt-11 d-flex">
       <v-col
         cols="12"
+        md="8"
+      >
+        <v-alert
+          class="mt-10 pt-6"
+          border="top"
+          colored-border
+          type="warning"
+          elevation="8"
+        >
+          <span>🚧 🚧 The application and the site are currently under development. You can test the app but keep in mind that this is not a final version and there might be some bugs. 🚧 🚧</span>
+        </v-alert>
+      </v-col>
+    </v-row>
+    <v-row v-resize="onResize" justify="center" class="mt-11 d-flex text-center">
+      <v-col
+        cols="12"
+        md="12"
         class="text-center"
       >
         <iframe
@@ -36,10 +42,10 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
-        <p>AutoTube demo  </p>
+        <p>AutoTube demo </p>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -51,8 +57,8 @@ export default {
   },
   data () {
     return {
-      title: 'AutoTube - Publish your videos yourself.',
-      description: 'AutoTube allows you to simply encode and publish your videos on the web.',
+      title: 'AutoTube - Encode, publish and host your videos yourself.',
+      description: 'AutoTube allows you to simply encode, publish and host your videos on the web.',
       iframeWidth: 800
     }
   },
@@ -74,7 +80,9 @@ export default {
   methods: {
     onResize () {
       this.iframeWidth = 0.6 * window.innerWidth
-      if (this.iframeWidth > 1200) { this.iframeWidth = 1200 }
+      if (this.iframeWidth > 1200) {
+        this.iframeWidth = 1200
+      }
     }
   }
 }
