@@ -1,75 +1,71 @@
 ---
-index: 0
-title: What is AutoTube ?
-description: Autotube is a tool made to publish yourself yours videos
+index: 0 
+title: What is AutoTube ? 
+description: AutoTube allows you to publish yourself yours videos. 
 next: installation
 ---
 
-## Tecum atque et videt faveas
+# What is AutoTube ?
 
-Lorem markdownum ut [semina fraudem](http://clamore.net/fractis.aspx): nec
-dixit, caelaverat, ait quos versa colore cernere conata:
-[alium](http://effugit.net/addura.aspx). Caelum satis. **Sed aliter** tunicasque
-ostendens huc, haec mandata negarunt crimen.
+tl;dr: AutoTube allows you to easily publish yourself (ie without YouTube, Vimeo,...) your videos on internet.
 
-- Dies qua
-- Ira curvantur
-- Lassus metusque custodia Phoebus inconcessisque oracula Scythica
-- Ego inritata
+Nowadays you have multiple options if you want to publish a video online:
 
-## Caede arma cum periturus
+- "Free" services like [YouTube](https://youtube.com "Youtube")
+- Paid services like [Vimeo](https://vimeo.com "Vimeo")
+- Platform As A Service
+  like [Cloudflare Stream](https://www.cloudflare.com/products/stream-delivery "Cloudflare stream")
 
-Iuppiter sua fortes unguibus quaeque, sibique et opus festisque parari Pyrois,
-quod notat e. Genitorque brevissimus fugit mendacis; plausis Hylonome, volvens,
-quarum Delphice.
+So you will ask:
 
-    if (hdd_link_qwerty) {
-        flopsAiff(ring_gnutella_infringement - ripcording, 4, mail_rw_emulation
-                - driveTrackbackPage);
-    } else {
-        kbps_ttl_ram = bloatware_access_video;
-        androidNasLaptop(macroTarget.hostMarginNull.frozenRequirements(
-                floating_monochrome), icannDvAndroid(internet_rate,
-                avatar_scraping, arrayTween));
-    }
-    rdf.zoneServletWindows = root_mountain_grep;
-    if (optic_pcmcia_grayscale) {
-        webmail_kbps.systemBookmark = w_sata(ocrDataCrossplatform,
-                flash_ribbon_computer.impactAffiliateOffline(46,
-                hard_printer_ad), 4);
-        metal(eccThirdIpx + logic);
-        degauss -= file;
-    } else {
-        webcam += 38;
-        site_upload_wildcard = 3;
-    }
-    designHorizontalSsd = dataJson(ipad_code_web, dot(pci - 94,
-            pppoe_drag_system(ipad, irqUserMatrix, 2)));
-    if (iterationRawTwitter(525606 * edutainment + pplBackupSync, google +
-            winsCmyk, processor + 821612)) {
-        jreEsportsEncoding = installEsportsDvr;
-        gif(icqBoot, processor - 2);
-        isdn.directx_megabyte(modeWebsite);
-    }
+## Why another option to publish my videos online ?
+ 
+My main motivation at the beginning of this project was the poor quality of 1080p streams
+on [YouTube](https://youtube.com "Youtube"). I have some videos with a lot of movements and as YT encode with a
+relatively low bitrate (around 4Mbs), there is à lot of compression artifacts:
 
-## Cingentibus mora inferias
+![Video compression artifacts](/img/video-compression-artifact.webp)
 
-Audisse ne virgo in pararet facta. Ense cadme **munera** in tutam invadunt;
-tenebo cum quoque praecontrectatque corpore gravitate et quoque.
+By using AutoTube, **you can select the bitrate of each stream**, for example, in my case, as we have a high speed internet
+access, i configure a 1080p stream with a 8Mbs bitrate and a "fallback" stream at 4Mbs, for those who have less available bandwidth.
 
-1. Succidere in eodem planissima iam adhuc squamis
-2. Actaeon lacertis potentibus lacrimis aures aquis concepit
-3. Debueram harenas Pterelas mallem latuit
-4. Aras locis
-5. Est plumis iussa
-6. Dementia flammae poenas
+There are others greats avantages of using AutoTube:
 
-In monitae de domini revocantis marinae progeniem captiva. **Cum** per obsessa
-notare et condidit exstinctique titubantem formas nudaverat putas, potuere,
-*quem* ac Tarentum erigitur.
+- You are no longer linked and captive of a platform. 
+  As AutoTube works with any web server, you have a lot of choices to host your
+  videos, and you can easily switch between them (for example if TOS changes...).
 
-Vapor nam tenet versae terra scire, vini, Palaemona **dedit**. Veni aede aure
-semper nunc crudus sensi velle Semiramis tenemus! Quae crista et flumina
-siccaeque verbere cornua morando qualem densus inmeritam dubito est volenti;
-aliquo portantes nescio fertur! Id promptum, dixit; sinu Elide raptam posset,
-inde illa credensque melle ingratus dapes.
+- You are no longer dependant of the platform rules and rights about the content you publish.
+  For example, do you think it's fair that you can't use music your own for a **private** video that only you and your loved ones will see ?  
+
+- As you can use standard web hosting plan, the cost of serving your videos is much cheaper than PAAS solutions.
+  (We will put some example later in the doc)
+
+- Your viewers don't have to support ads if you don't want to, and maybe more important:  
+  **Your content will not be polluted by unappropriated ads**.  
+  Keep in mind that YouTube have updated their TOS to add [the right to monetize any video](https://www.forbes.com/sites/johnkoetsier/2020/11/18/youtube-will-now-show-ads-on-all-videos-even-if-creators-dont-want-them "YouTube Will Now Show Ads On All Videos Even If Creators Don’t Want Them").  
+  If you are using YouTube professionally, imagine that YouTube can insert your competitor ads before your own product video...
+
+
+<div class="center" style="margin: auto">
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve always kept my YouTube channel ad-free on purpose.<br><br>Looks like that&#39;s changing for all ad-free YouTube channels.<br><br>Please reconsider, <a href="https://twitter.com/Google?ref_src=twsrc%5Etfw">@google</a>. <a href="https://t.co/E8LdvsmPkl">pic.twitter.com/E8LdvsmPkl</a></p>&mdash; Ethan Siegel (@StartsWithABang) <a href="https://twitter.com/StartsWithABang/status/1329234576175108097?ref_src=twsrc%5Etfw">November 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+## Ok but it's difficult to publish and host videos !
+
+Yes... and no, thanks to AutoTube ! 😉
+
+You just need online space served via HTTP (any web hosting plan, cloud instance, dedicated server, Amazon S3,...).  
+
+Then AutoTube will do the hard part for you:
+
+- Encoding your video to multiple streams, with different resolutions and bitrates, to generate a dynamic adaptative streaming package.
+- Uploading this package, with a player, to your online space.
+
+Take a look at the [demo](/ "AutoTube demo") on the home page 
+(all the videos on the home page have been generated by AutoTube and hosted on 
+[Scaleway S3](https://www.scaleway.com/en/object-storage/ "Object storage at Scaleway") 
+behind [Cloudflare](https://www.cloudflare.com/ "CDN and cache for AutoTube") for CDN and cache).
+
+
+

@@ -24,9 +24,6 @@
           </v-list-item>
         </v-col>
         <v-col>
-          <h1>
-            {{ article.title }}
-          </h1>
           <nuxt-content :document="article" />
         </v-col>
       </v-row>
@@ -110,6 +107,10 @@ h1 {
   color: #E3F2FD;
 }
 
+.nuxt-content h1 {
+  margin-bottom: .8rem;
+}
+
 .nuxt-content h2 {
   color: #1E88E5;
   padding-bottom: .5rem;
@@ -122,11 +123,23 @@ h1 {
 }
 
 .nuxt-content a {
-  color: #BBDEFB!important;
+  color: #64B5F6!important;
+}
+
+.nuxt-content ul {
+  margin-bottom: 0.8rem;
 }
 
 .nuxt-content pre {
   background-color: #fdf6ef;
+}
+
+.nuxt-content blockquote
+{
+  font-style: normal;
+  margin-left: 22px;
+  border-left: 4px solid #e5671e;
+  padding-left: 8px;
 }
 
 </style>

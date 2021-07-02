@@ -8,10 +8,7 @@
         </div>
       </v-col>
     </v-row>
-    <v-row>
-      <Download />
-    </v-row>
-    <v-row justify="center" class="mt-5 d-flex">
+    <v-row justify="center" class="d-flex">
       <v-col
         cols="12"
         md="8"
@@ -26,6 +23,9 @@
           <span>🚧 🚧 The application and the site are currently under development. You can test the app but keep in mind that this is not a final version and there might be some bugs. 🚧 🚧</span>
         </v-alert>
       </v-col>
+    </v-row>
+    <v-row>
+      <Download />
     </v-row>
     <v-row v-resize="onResize" justify="center" class="mt-5 d-flex text-center">
       <v-col
@@ -54,7 +54,7 @@
         class="text-center"
       >
         <h2 class="mb-4">
-          AutoTube full presentation (in 🥖 🧀 🍷).
+          AutoTube full presentation (in 🧀🍷🥖).
         </h2>
         <iframe
           :width="iframeWidth +'px'"
@@ -62,7 +62,7 @@
           src="https://v.autotube.app/autotube/embed.html"
           title="AutoTube presentation en français"
           frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
           allowfullscreen
         />
       </v-col>
