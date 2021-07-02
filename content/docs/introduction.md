@@ -1,7 +1,7 @@
 ---
 index: 0 
 title: What is AutoTube ? 
-description: AutoTube allows you to publish yourself yours videos. 
+description: AutoTube allows you to publish yourself your videos. 
 next: installation
 ---
 
@@ -24,7 +24,7 @@ My main motivation at the beginning of this project was the poor quality of 1080
 on [YouTube](https://youtube.com "Youtube"). I have some videos with a lot of movements and as YT encode with a
 relatively low bitrate (around 4Mbs), there is à lot of compression artifacts:
 
-![Video compression artifacts](/img/video-compression-artifact.webp)
+<img src="/img/youtube-compression-artifacts.png" alt="Youtube Video compression artifacts" width="100%" />
 
 By using AutoTube, **you can select the bitrate of each stream**, for example, in my case, as we have a high speed internet
 access, i configure a 1080p stream with a 8Mbs bitrate and a "fallback" stream at 4Mbs, for those who have less available bandwidth.
@@ -45,10 +45,8 @@ There are others greats avantages of using AutoTube:
   **Your content will not be polluted by unappropriated ads**.  
   Keep in mind that YouTube have updated their TOS to add [the right to monetize any video](https://www.forbes.com/sites/johnkoetsier/2020/11/18/youtube-will-now-show-ads-on-all-videos-even-if-creators-dont-want-them "YouTube Will Now Show Ads On All Videos Even If Creators Don’t Want Them").  
   If you are using YouTube professionally, imagine that YouTube can insert your competitor ads before your own product video...
-
-
-<div class="center" style="margin: auto">
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve always kept my YouTube channel ad-free on purpose.<br><br>Looks like that&#39;s changing for all ad-free YouTube channels.<br><br>Please reconsider, <a href="https://twitter.com/Google?ref_src=twsrc%5Etfw">@google</a>. <a href="https://t.co/E8LdvsmPkl">pic.twitter.com/E8LdvsmPkl</a></p>&mdash; Ethan Siegel (@StartsWithABang) <a href="https://twitter.com/StartsWithABang/status/1329234576175108097?ref_src=twsrc%5Etfw">November 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div style="width: 100%">
+<img src="/img/youtube-tos-monetize.png" alt="Youtube Video compression artifacts" width="100%" style="max-width: 500px"/>
 </div>
 
 ## Ok but it's difficult to publish and host videos !
@@ -59,7 +57,7 @@ You just need online space served via HTTP (any web hosting plan, cloud instance
 
 Then AutoTube will do the hard part for you:
 
-- Encoding your video to multiple streams, with different resolutions and bitrates, to generate a dynamic adaptative streaming package.
+- Encoding your video to multiple streams, with different resolutions and bitrates, to generate a [dynamic adaptative streaming](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP "AutoTube DASH encoding") package.
 - Uploading this package, with a player, to your online space.
 
 Take a look at the [demo](/ "AutoTube demo") on the home page 

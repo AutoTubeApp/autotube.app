@@ -134,6 +134,12 @@ h1 {
   background-color: #fdf6ef;
 }
 
+.nuxt-content img {
+  display: block;
+  margin: 0 auto 0.8em;
+  max-width: 800px;
+}
+
 .nuxt-content blockquote
 {
   font-style: normal;

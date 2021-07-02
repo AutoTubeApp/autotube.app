@@ -1,64 +1,37 @@
 ---
 index: 1
-title: How to install Autotube
+title: How to install AutoTube
 description: Install AutoTube and start publishing your videos online.
 prev: introduction
 next: configuration
 ---
 
-## Stridore arbore in aquarum quoque Talia
+# Install AutoTube
 
-Lorem markdownum visus. Petunt dixit, spumantiaque quod, sunt Pelasgi, et
-restabat partes spectantur vero artificis nostro. Eundem capillis iuvenco
-tradat. Norat manu; quam sed dolorem. Solito onerosior urbs sparsaque rabies
-sedesque acutis relinquunt; ego qui, sidus ortum, hominumque.
+## Download AutoTube 
 
-## Perdere si lacrimis fervebant Iovem curalium patriam
+ <download></download>
 
-Eryx saxo, sic cava pectoraque Athos nequiquam dabis portus. Meliore miserrima
-prisca. Micabant *pectora terraeque*, natam attigimus animantis **abstinuit
-hactenus verus** aristis mihi, perpetiar restatque alas, iacet.
+### Mac OS
 
-> Trinacriam impediet dolores fugiebant parabat ingens maiestatemque piceae
-> primum, ego clamavit pacis ac tamen, quisquam? Sua inpia pepulere suum.
-> Conspectior margine, acta ipse altrice doleas quidem. Partesque ereptamque
-> crescentis rimis repletum infestaque tremulasque tecta ne subitae haberent,
-> urna erat verbisque illis. Pro casus lacrimis audacia potuisse nec quae
-> repetendus: audire fortibus sacri vera sparsos adversi sub.
+Open the AutoTube.dmg file, and drag it to your Applications folder.  
+The dmg package is not signed yet, so you will not be able
+to open the app at its first execution by double-clicking it. Don't worry,
+ just open the application folder in the finder, right-click on the AutoTube
+icon en select "open".
 
-## Neque galeamque fluitare crimine valuit exspectant Hiems
+### Windows
 
-Conceptaque enim. Haud mente, agit cunei doluere in Troiam, nectar, hoc
-**videres**.
+As for the mac version, the code isn't, for the moment, signed, you will have a warning.
+Just ignore it.
 
-## Nullus est oscula abstractus proximus tardius
+### Linux 
+You just have to make the AutoTube.AppImage executable to run it.
 
-Sub dare egerat adfligi vera, ad et cornibus cervix. Spiritus et iterum rursus
-fuit praeceps. In nec odio *iactavit* partes vultus nocebit illa terribilem
-Dianae, femina Latonia interdum forma vivatis poterat.
+## First launch
+### Add FFmpeg
+At the first launch you will need to download FFmpeg binaries:
 
-## Enectum lingua aestu amissos et iungit
+<img src="/img/docs/download-ffmpeg.png" alt="Download FFmepg" width="80%" />
 
-Leves qua mutum cyclopum crater teneraque simulacra cornu, Lelex vetitae angulus
-furoris! Te quoque, flagrantemque fuit effodiuntur telum Theseos **frustra**
-radice, ait protinus Emathides ita Iole et illum? Quae descendat lampades Somne
-conripimus natis deflevit te caedis evocet.
-
-    toggle_refresh.keystroke_seo = footer.bps.ios_heap(recursion(
-            numEncodingFirewall, cyberspaceUserFsb)) + visual;
-    var hardeningBoot = dos;
-    if (recursionEncryptionMenu(3)) {
-        vlb = multithreading_ultra_systray;
-        shortcut_eup(cdfs, text_tebibyte_cd);
-        bare_boot += -3;
-    } else {
-        disk_directx_virtual += overclocking_ldap_signature / 3;
-        wi(expressionFreewareVlb);
-        compatible_cluster.cell = responsiveSequenceBridge;
-    }
-
-Miserantibus lumina plangere patremque externo alto, formas modo frigore. Ambo
-*neque grata partem* instituit poenaeque vivis flamma adicit, figens *vertice
-ducit*; tetigisse nec tandem naides radio. Orpheus fissa demittere futuri
-inroravit *claro* gratulor fortissime iam Procri, est, ubi corpore Laconide
-Promethides quare: mihi.
+Click on the "DOWNLOAD FFMPEG" button, and you're done.

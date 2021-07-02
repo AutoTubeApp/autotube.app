@@ -18,12 +18,29 @@
         <span>Home</span>
       </nuxtLink>
 
-      <nuxtLink to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('docs')}">
+      <nuxtLink class="mr-3" to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('docs')}">
         <span>Documentation</span>
       </nuxtLink>
 
+      <a
+        href="https://github.com/toorop/autotube.support/issues/new/choose"
+        target="_blank"
+      >
+        <span>Support</span>
+      </a>
+
       <v-spacer />
       <v-btn
+        v-tooltip="'Use this github repo for bug report and feature request'"
+        icon
+        color="primary"
+        href="https://github.com/toorop/autotube.support/issues/new/choose"
+        target="_blank"
+      >
+        <v-icon>mdi-github</v-icon>
+      </v-btn>
+      <v-btn
+        v-tooltip="'My twitter account'"
         icon
         color="primary"
         href="https://twitter.com/poroot"
