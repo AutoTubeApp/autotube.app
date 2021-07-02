@@ -135,8 +135,7 @@ h1 {
 }
 
 .nuxt-content img {
-  display: block;
-  margin: 0 auto 0.8em;
+  margin-bottom: 1rem;
   max-width: 800px;
 }
 

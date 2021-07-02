@@ -18,7 +18,7 @@ Open the AutoTube.dmg file, and drag it to your Applications folder.
 The dmg package is not signed yet, so you will not be able
 to open the app at its first execution by double-clicking it. Don't worry,
  just open the application folder in the finder, right-click on the AutoTube
-icon en select "open".
+icon and select "open".
 
 ### Windows
 

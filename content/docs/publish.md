@@ -9,7 +9,7 @@ prev: installation
 ## Requirements
 
 - The video to publish.
-- A webserver on where you will host the generated package.
+- A hosting space, where you will put the generated package.
 
 Of course, you don't need to maintain your own webserver, you can just use any web hosting plan or S3 storage.
 
@@ -18,7 +18,7 @@ as **remote target** in this documentation.
 
 ## Configure a remote target
 
-Reminder: a remote target is where AutoTune will upload your generated video package.
+Reminder: a remote target is where AutoTube will upload your generated video package.
 
 Click on the "Upload Targets", in the File menu:
 
@@ -32,11 +32,11 @@ This will pop up a card:
 
 <img src="/img/docs/card-remote-target.png" alt="Download FFmepg" width="80%" />
 
-Note that at the right of each field you have a "?" sign, just pass your mouse hover it and
+Note that at the right of each field you have a "?" sign, just pass your mouse hover it, and
 you will have contextual help about the field.
 
-You must select the **Type** at first. It represents the type of the remote target and or the protocol 
-to use to upload files on the remote server.
+You must select the **Type** at first. It represents the type of the remote target and/or the protocol 
+used to upload files on the remote server.
 
 Available types are :
 
@@ -72,18 +72,18 @@ base_url/martien2/index.html
 By default, the project name is the name of your video file.
 
 #### Local output path
-It's the path where the video package will be generated.
+It's the path where the video package will be generated on your computer.
 If you want to keep a local version of the package, set it, otherwise a temporary path will be used.
 
 #### Remote Target
 Select here the location where you want to upload the generated video package.
 
 #### Encoder
-Depending on your config you may have multiple choices for the encoder to use.
+Depending on your config you may have multiple choices for the encoder.
 Normally you should always have libx264 and if you have a graphic card which support video encoding you may have another 
 one (like h264_nvenc or videotoolbox on macOS).  
 Note that if a hardware-accelerated video encoder is fastest, it **generally** produce lower quality. 
-So, if you use a hardware-accelerated video encoder increase bitrate.
+So if you use a hardware-accelerated video encoder increase the bitrate.
 
 #### Streams
 
@@ -91,7 +91,7 @@ In this section you will configure the 3 streams that AutoTube will produce.
 The idea behind producing multiple streams is to be able to propose to each viewer a stream corresponding
 to its settings, essentially to its available bandwidth.  
 
-The config only depends on your needs, your video (frame rate, movements,...) and your target audience.  
+The config only depends on your needs, your video (frame rate, movements,...) and your targeted audience.  
 You can use this as base, considering a 24 fps video:
 
 |   Resolution    |  &nbsp;  Bitrate (Kb/s |
@@ -111,8 +111,8 @@ Once your config is defined, click on the "Encode and export button":
 
 If you have correctly configured your "base URL" setting, if you click on the "watch your video" button, 
 a browser windows will open with  your playable video (if you do not set the base_url setting or if it's wrong, 
-just open yourself your browser to the root public URL of your webserver and add the "project_name/" at the end opf the URL :   
+just open yourself your browser to the root public URL of your webserver and add the "project_name/" at the end of the URL :   
 
 <img src="/img/docs/autotube-default-player.png" alt="AutoTube default player" width="80%" />
 
-As you can see on this screenshot, the default page display HTML code to embed the player in any web page.
+As you can see on this screenshot, the default page display HTML code to use in order to embed the player in any web page.
