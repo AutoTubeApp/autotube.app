@@ -1,41 +1,63 @@
 <template>
-  <v-container>
+  <v-container class="pt-1">
     <SocialHead :title="title" :description="description" />
-    <v-row justify="center" align="center" class="mt-2">
+    <v-row justify="center" align="center" class="mt-0 mb-0">
       <v-col cols="12">
         <div class="text-center">
-          <h1>Encode, publish and host your videos yourself</h1>
+          <h1>AutoTube is a decentralized YouTube Alternative </h1>
         </div>
       </v-col>
     </v-row>
-    <v-row justify="center" class="d-flex">
+    <!--    <v-row justify="center" class="d-flex">
       <v-col
         cols="12"
         md="8"
       >
         <v-alert
-          class="mt-6 pt-6"
+          class="pt-6 text-center justify-center text-sm-h6"
           border="top"
           colored-border
           type="warning"
           elevation="8"
         >
-          <span>🚧 🚧 The application and the site are currently under development. You can test the app but keep in mind that this is not a final version and there might be some bugs. 🚧 🚧</span>
+          <span>🍾🍾🍾 AutoTube now integrates full support of IPFS 🍾🍾🍾</span>
         </v-alert>
       </v-col>
-    </v-row>
+    </v-row>-->
     <v-row>
       <Download />
     </v-row>
+    <v-row lass="d-flex">
+      <v-col
+        class=""
+        cols="12"
+      >
+        <p>
+          Thanks to AutoTube you will be able to share videos through the web without any constraints, nor adds,
+          or annoying platform rules.<br>
+          It's yours videos and so it must be your choice to share them with your friends, or with the world.<br>
+        </p>
+        <ul>
+          <li>Upload to: IPFS, Amazon S3 compatible storage, or any web hosting plan through FTP or SFTP,... more to come.</li>
+          <li>Virtually unstoppable if you use IPFS. Each player becomes an IPFS node which will host and share your videos via peer to peer.</li>
+          <li>Select yourself the quality of your streams.</li>
+          <li>Direct upload from YouTube (soon).</li>
+          <li>Available for Windows, MacOS, and Linux.</li>
+          <li>100% Free and (soon) fully Open Source.</li>
+          <li>More and more to come. Stay Tuned !</li>
+        </ul>
+        <h2 class="mt-4">
+          Watch the demo (created with AutoTube):
+        </h2>
+      </v-col>
+    </v-row>
+    <!-- demo -->
     <v-row v-resize="onResize" justify="center" class="mt-5 d-flex text-center">
       <v-col
         cols="12"
         md="12"
         class="text-center"
       >
-        <h2 class="mb-4">
-          AutoTube demo
-        </h2>
         <iframe
           :width="iframeWidth +'px'"
           :height="iframeWidth * (9/16) + 'px'"
@@ -47,15 +69,25 @@
         />
       </v-col>
     </v-row>
-    <v-row v-resize="onResize" justify="center" class="mt-11 d-flex text-center">
+    <!--- end demo -->
+
+    <!--- french demo -->
+    <v-row lass="d-flex">
+      <v-col
+        class=""
+        cols="12"
+      >
+        <h2 class="mt-4">
+          AutoTube full presentation (in 🧀🍷🥖):
+        </h2>
+      </v-col>
+    </v-row>
+    <v-row v-resize="onResize" justify="center" class="mt-5 d-flex text-center">
       <v-col
         cols="12"
         md="12"
         class="text-center"
       >
-        <h2 class="mb-4">
-          AutoTube full presentation (in 🧀🍷🥖).
-        </h2>
         <iframe
           :width="iframeWidth +'px'"
           :height="iframeWidth * (9/16) + 'px'"
@@ -67,6 +99,7 @@
         />
       </v-col>
     </v-row>
+    <!--- end french demo -->
   </v-container>
 </template>
 
@@ -79,8 +112,8 @@ export default {
   },
   data () {
     return {
-      title: 'AutoTube - Encode, publish and host your videos yourself.',
-      description: 'AutoTube allows you to simply encode, publish and host your videos on the web.',
+      title: 'AutoTube is a decentralized YouTube alternative',
+      description: 'Host your videos on ipfs, on any aws s3 compatible storage, or any web hosting plan.',
       iframeWidth: 800
     }
   },

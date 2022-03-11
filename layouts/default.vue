@@ -3,7 +3,7 @@
     <v-app-bar
       app
     >
-      <nuxtLink to="/" exact class="d-flex">
+      <nuxtLink to="/" exact class="d-flex no-decoration">
         <v-icon
           class="mr-2"
           large
@@ -14,16 +14,21 @@
       </nuxtLink>
       <v-toolbar-title class="mr-10 text--white" v-text="title" />
 
-      <nuxtLink to="/" exact class="mr-3">
+      <nuxtLink to="/" exact class="mr-3 no-decoration">
         <span>Home</span>
       </nuxtLink>
 
-      <nuxtLink class="mr-3" to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('docs')}">
+      <nuxtLink class="mr-3 no-decoration" to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('docs')}">
         <span>Documentation</span>
       </nuxtLink>
+      <!--
+      <nuxtLink class="mr-3 no-decoration" to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('blog')}">
+        <span>Blog</span>
+      </nuxtLink>-->
 
       <a
-        href="https://github.com/toorop/autotube.support/issues/new/choose"
+        class="no-decoration"
+        href="https://github.com/AutoTubeApp/autotube.support/issues/new/choose"
         target="_blank"
       >
         <span>Support</span>
@@ -31,22 +36,41 @@
 
       <v-spacer />
       <v-btn
-        v-tooltip="'Use this github repo for bug report and feature request'"
+        v-tooltip="'Github'"
+        class="mr-1 pr-0"
         icon
         color="primary"
-        href="https://github.com/toorop/autotube.support/issues/new/choose"
+        href="https://github.com/AutoTubeApp"
         target="_blank"
       >
         <v-icon>mdi-github</v-icon>
       </v-btn>
       <v-btn
-        v-tooltip="'My twitter account'"
+        v-tooltip="'Follow us on twitter'"
         icon
         color="primary"
-        href="https://twitter.com/poroot"
+        href="https://twitter.com/autotube_app"
         target="_blank"
       >
         <v-icon>mdi-twitter</v-icon>
+      </v-btn>
+      <v-btn
+        v-if="!$vuetify.theme.dark"
+        v-tooltip="'Enable Dark mode'"
+        icon
+        color="yellow darken-3"
+        @click="darkMode"
+      >
+        <v-icon>mdi-moon-waxing-crescent</v-icon>
+      </v-btn>
+      <v-btn
+        v-if="$vuetify.theme.dark"
+        v-tooltip="'Disable Dark mode'"
+        icon
+        color="yellow darken-2"
+        @click="darkMode"
+      >
+        <v-icon>mdi-white-balance-sunny</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -69,24 +93,22 @@
 
 <script>
 import Alert from '@/components/Alert'
+
 export default {
   components: { Alert },
   data () {
     return {
       title: 'AutoTube'
     }
+  },
+  methods: {
+    darkMode () {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
   }
 }
 </script>
 
 <style>
-a {
-  color: darkgray!important;
-  text-decoration: none;
-}
-
-a.nuxt-link-active {
-  color: white!important;
-}
 
 </style>

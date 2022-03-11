@@ -11,16 +11,17 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Encode, publish and host videos yourself - Autotube' }
+      { hid: 'description', name: 'description', content: 'Decentralized YouTube Alternative - Autotube' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/tooltip.css'
+    '~/assets/css/main.css',
+    '~/assets/css/tooltip.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -63,11 +64,13 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
+          // background: '#05131f',
+          primary: '#2894f4',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
@@ -79,7 +82,7 @@ export default {
     }
   },
   loading: {
-    color: '#1565C0',
+    color: '#05131f',
     height: '3px'
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build

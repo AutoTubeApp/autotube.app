@@ -1,13 +1,13 @@
 <template>
   <v-container>
     <v-row class="d-flex">
-      <v-row class="d-flex mt-5 justify-center">
+      <v-row class="d-flex mt-1 justify-center">
         <v-col
           v-for="card in cards"
           :key="card.title"
           cols="12"
           xl="3"
-          lg="3"
+          lg="4"
           md="4"
           sm="12"
           xs="12"
@@ -136,7 +136,7 @@ export default {
 
 <style scoped>
 .card {
-  opacity: 0.65;
+  opacity: 0.40;
 }
 
 .cardSelected {

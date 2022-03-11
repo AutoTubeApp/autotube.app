@@ -1,0 +1,7 @@
+a.no-decoration {
+  text-decoration: none;
+}
+
+a.nuxt-link-active {
+  font-weight: bold;
+}
