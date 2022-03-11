@@ -7,16 +7,16 @@ next: installation
 
 # What is AutoTube ?
 
-tl;dr: AutoTube allows you to easily publish yourself (ie without YouTube, Vimeo,...) your videos on internet.
+TL;DR: AutoTube allows you to easily publish yourself (ie without YouTube, Vimeo,...) your videos on internet.
 
-Nowadays you have multiple options if you want to publish a video online:
+Nowadays, you have multiple options if you want to publish a video online:
 
 - "Free" services like [YouTube](https://youtube.com "Youtube")
 - Paid services like [Vimeo](https://vimeo.com "Vimeo")
 - Platform As A Service
-  like [Cloudflare Stream](https://www.cloudflare.com/products/stream-delivery "Cloudflare stream")
-
-So you will ask:
+  like [Cloudflare Stream](https://www.cloudflare.com/products/stream-delivery "Cloudflare stream")  
+  
+<br>So you will ask:
 
 ## Why another option to publish my videos online ?
  
@@ -24,41 +24,48 @@ My main motivation at the beginning of this project was the poor quality of 1080
 on [YouTube](https://youtube.com "Youtube"). I have some videos with a lot of movements and as YT encode with a
 relatively low bitrate (around 4Mbs), there is à lot of compression artifacts:
 
+<div style="width: 100%; margin-bottom: 1em; text-align: center">
 <img src="/img/youtube-compression-artifacts.png" alt="Youtube Video compression artifacts" width="100%" />
+</div>
 
 By using AutoTube, **you can select the bitrate of each stream**, for example, in my case, as we have a high speed internet
-access, i configure a 1080p stream with a 8Mbs bitrate and a "fallback" stream at 4Mbs, for those who have less available bandwidth.
+access at home, i configure a 1080p stream with a 8Mbs bitrate and a "fallback" stream at 4Mbs, for those who have less available bandwidth.
 
-There are others greats avantages of using AutoTube:
+As development progresses and user feedback comes in, I've seen other great benefits of using AutoTube:
+
+- You are no longer dependant of a platform arbitrary rules and rights.  
+  For example, do you think it's fair that you can't use music your own for a **private** video that only you and your loved ones will see ?
+  Me no.  
+  Do you think it's fair that a platform remove your video or worse delete your account because something doesn't respect a new rules (or a new way of thinking) even if the content respect the law ?   
+  Me no.
 
 - You are no longer linked and captive of a platform. 
-  As AutoTube works with any web server, you have a lot of choices to host your
-  videos, and you can easily switch between them (for example if TOS changes...).
+  As AutoTube works with any "web space", you have a lot of choices to host your
+  videos. And you can easily switch between them.
 
-- You are no longer dependant of the platform rules and rights about the content you publish.
-  For example, do you think it's fair that you can't use music your own for a **private** video that only you and your loved ones will see ?  
-
-- As you can use standard web hosting plan, the cost of serving your videos is much cheaper than PAAS solutions.
+- As you can use standard web hosting plan, the cost of serving your videos is much cheaper than paid services.
   (We will put some example later in the doc)
 
 - Your viewers don't have to support ads if you don't want to, and maybe more important:  
   **Your content will not be polluted by unappropriated ads**.  
   Keep in mind that YouTube have updated their TOS to add [the right to monetize any video](https://www.forbes.com/sites/johnkoetsier/2020/11/18/youtube-will-now-show-ads-on-all-videos-even-if-creators-dont-want-them "YouTube Will Now Show Ads On All Videos Even If Creators Don’t Want Them").  
-  If you are using YouTube professionally, imagine that YouTube can insert your competitor ads before your own product video...
-<div style="width: 100%">
+  If you are using YouTube professionally, they can, for example, insert your competitor ads before your video.
+<div style="width: 100%; margin-bottom: 1em; text-align: center">
 <img src="/img/youtube-tos-monetize.png" alt="Youtube Video compression artifacts" width="100%" style="max-width: 500px"/>
 </div>
 
 ## Ok but it's difficult to publish and host videos !
 
-Yes... and no, thanks to AutoTube ! 😉
+Yes... it was ! 😉
 
-You just need online space served via HTTP (any web hosting plan, cloud instance, dedicated server, Amazon S3,...).  
+With AutoTube you just need an online space served via HTTP (any web hosting plan, cloud instance, dedicated server, Amazon S3, IPFS storage...) and that's it. 
+AutoTube will do the hard part for you:
 
-Then AutoTube will do the hard part for you:
-
-- Encoding your video to multiple streams, with different resolutions and bitrates, to generate a [dynamic adaptative streaming](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP "AutoTube DASH encoding") package.
-- Uploading this package, with a player, to your online space.
+- Encoding your video to multiple streams, with different resolutions and bitrates, in order to generate a [dynamic adaptative streaming](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP "AutoTube DASH encoding") package.
+- Generate a [dynamic manifest](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP "AutoTube DASH manifest") that will be served by your web server.
+- Build a package, with a HTML5 player, that will be served by your web server.
+- Uploading this package to your online space.
+<br>
 
 Take a look at the [demo](/ "AutoTube demo") on the home page 
 (all the videos on the home page have been generated by AutoTube and hosted on 

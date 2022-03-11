@@ -40,14 +40,15 @@ used to upload files on the remote server.
 
 Available types are :
 
+- IPFS
 - SFTP: FTP over SSH
 - Amazon S3 (and compatible)
 - FTP: use ftp at last ressort. This protocol is less secure.
+<br>
 
 Note that all your configuration will be encrypted with AES 256 using a unique key (generated at first launch).
 
-The "Base URL" even if it's not required, must be very useful. It represents the public URL to 
-access to your remote target and is used to generate public link to your publication.
+The "Base URL" represents the public URL to access to your remote target and is used to generate public link to your publication.
 
 ## Create a new project
 
@@ -82,8 +83,8 @@ Select here the location where you want to upload the generated video package.
 Depending on your config you may have multiple choices for the encoder.
 Normally you should always have libx264 and if you have a graphic card which support video encoding you may have another 
 one (like h264_nvenc or videotoolbox on macOS).  
-Note that if a hardware-accelerated video encoder is fastest, it **generally** produce lower quality. 
-So if you use a hardware-accelerated video encoder increase the bitrate.
+If you have a hardware encoder (h264_nvenc or videotoolbox), select it, the encoding process will be **much** faster.
+
 
 #### Streams
 
@@ -96,10 +97,10 @@ You can use this as base, considering a 24 fps video:
 
 |   Resolution    |  &nbsp;  Bitrate (Kb/s |
 |-----------------|:---------------:|
-| 480p  | 1000
-| 720p  | 3000
-| 1080p | 6000
-| 2560p | 8000
+| 480p  | 1000 |
+| 720p  | 3000 |
+| 1080p | 6000 |
+| 2560p | 8000 |
 
 .&nbsp;  
     

@@ -10,7 +10,7 @@ next: configuration
 
 ## Download AutoTube 
 
- <download></download>
+ <download :display-extra-btn-text=false ></download>
 
 ### Mac OS
 

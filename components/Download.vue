@@ -48,7 +48,7 @@
                     color="primary"
                     :href="card.link"
                   >
-                    Download <span v-if="$vuetify.breakpoint.name !== 'md'"> {{ card.btnText }} </span></v-btn>
+                    Download <span v-if="displayExtraBtnText && $vuetify.breakpoint.name !== 'md'"> {{ card.btnText }} </span></v-btn>
                 </span>
               </v-col>
             </v-row>
@@ -77,8 +77,13 @@ const wkGetVersion = 'https://autotube-get-version.dppst.workers.dev/'
 const oss = ['linux', 'mac', 'windows']
 
 export default {
-
   name: 'Download',
+  props: {
+    displayExtraBtnText: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       version: '',
@@ -109,6 +114,7 @@ export default {
   },
 
   mounted () {
+    console.log(this.displayExtraBtnText)
     // get last version
     this.getVersion()
     const userOs = getOs()
