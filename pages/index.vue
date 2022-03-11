@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pt-1">
+  <v-container class="pt-1 ">
     <SocialHead :title="title" :description="description" />
     <v-row justify="center" align="center" class="mt-0 mb-0">
       <v-col cols="12">

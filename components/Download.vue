@@ -6,7 +6,7 @@
           v-for="card in cards"
           :key="card.title"
           cols="12"
-          xl="3"
+          xl="4"
           lg="4"
           md="4"
           sm="12"
@@ -48,8 +48,7 @@
                     color="primary"
                     :href="card.link"
                   >
-                    Download
-                  </v-btn>
+                    Download <span v-if="$vuetify.breakpoint.name !== 'md'"> {{ card.btnText }} </span></v-btn>
                 </span>
               </v-col>
             </v-row>
@@ -88,18 +87,21 @@ export default {
           src: '/img/apple.svg',
           filename: 'autotube.dmg',
           link: '',
+          btnText: 'for Mac',
           selected: true
         },
         windows: {
           src: '/img/windows.svg',
           filename: 'autotube-setup.exe',
           link: '',
+          btnText: 'for Windows',
           selected: false
         },
         linux: {
           src: '/img/linux.svg',
           filename: 'autotube.AppImage',
           link: '',
+          btnText: 'for Linux',
           selected: false
         }
       }

@@ -74,7 +74,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container id="main">
         <Alert />
         <nuxt keep-alive />
       </v-container>
@@ -110,5 +110,8 @@ export default {
 </script>
 
 <style>
+#main {
+  max-width: 1200px!important;
+}
 
 </style>
