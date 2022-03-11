@@ -4,7 +4,7 @@
     <v-row justify="center" align="center" class="mt-0 mb-0">
       <v-col cols="12">
         <div class="text-center">
-          <h1>AutoTube is a decentralized YouTube Alternative </h1>
+          <h1>AutoTube is a decentralized YouTube alternative </h1>
         </div>
       </v-col>
     </v-row>
