@@ -114,7 +114,6 @@ export default {
   },
 
   mounted () {
-    console.log(this.displayExtraBtnText)
     // get last version
     this.getVersion()
     const userOs = getOs()

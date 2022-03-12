@@ -7,27 +7,28 @@
         <v-icon
           class="mr-2"
           large
-          color="#1E88E5"
+          color="#2894f4"
         >
           mdi-youtube
         </v-icon>
       </nuxtLink>
       <v-toolbar-title class="mr-10 text--white" v-text="title" />
 
-      <nuxtLink to="/" exact class="mr-3 no-decoration">
+      <nuxtLink to="/" exact class="mr-3 no-decoration" :class="{'dark': $vuetify.theme.dark}">
         <span>Home</span>
       </nuxtLink>
 
-      <nuxtLink class="mr-3 no-decoration" to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('docs')}">
+      <nuxtLink class="mr-3 no-decoration" :class="{'nuxt-link-active': $route.name.includes('docs'), 'dark': $vuetify.theme.dark}" to="/docs/introduction">
         <span>Documentation</span>
       </nuxtLink>
-      <!--
-      <nuxtLink class="mr-3 no-decoration" to="/docs/introduction" :class="{'nuxt-link-active': $route.name.includes('blog')}">
+
+      <nuxtLink class="mr-3 no-decoration" :class="{'nuxt-link-active': $route.name.includes('blog'), 'dark': $vuetify.theme.dark}" to="/blog/">
         <span>Blog</span>
-      </nuxtLink>-->
+      </nuxtLink>
 
       <a
         class="no-decoration"
+        :class="{'dark': $vuetify.theme.dark}"
         href="https://github.com/AutoTubeApp/autotube.support/issues/new/choose"
         target="_blank"
       >
@@ -109,7 +110,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+a.dark {
+  color: white;
+}
+
 #main {
   max-width: 1200px!important;
 }

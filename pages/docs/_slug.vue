@@ -11,7 +11,7 @@
           class="pa-1 pt-3 mr-2 pr-3 d-xs-flex d-sm-block"
         >
           <v-list-item
-            v-for=" t in toc"
+            v-for="t in toc"
             :key="t.slug"
             nuxt
             :to="t.path"
@@ -74,7 +74,6 @@ export default {
   head () {
     if (this.article === null) { return }
     return {
-
       title: this.article ? this.article.title : '',
       meta: [
         {
@@ -85,7 +84,6 @@ export default {
       ]
     }
   },
-
   mounted () {
   }
 
@@ -93,10 +91,7 @@ export default {
 
 </script>
 
-<style scoped>
-h1 {
-  color: #1E88E5;
-}
+<style>
 #toc {
   border-right-style: solid;
   border-right-color: rgba(25, 118, 210, 0.3);
@@ -112,18 +107,15 @@ h1 {
 }
 
 .nuxt-content h2 {
-  color: #1E88E5;
   padding-bottom: .5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   margin-top: 1.5rem;
   border-bottom-width: 1px;
   border-bottom-color: rgba(25, 118, 210, 0.3);
   border-bottom-style: solid;
-
 }
 
 .nuxt-content a {
-  color: #64B5F6!important;
 }
 
 .nuxt-content ul {
