@@ -1,6 +1,8 @@
 ---
-index: 0 
+index: 0
+category: Get Started
 title: What is AutoTube ? 
+dLink: What is AutoTube ? 
 description: AutoTube allows you to publish yourself your videos. 
 next: installation
 ---

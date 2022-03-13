@@ -1,7 +1,13 @@
 <template>
   <div id="blog">
     <div v-if="isIndex || tag">
-      <h1>Posts <span v-if="tag"> with tag #{{ tag }} </span> </h1>
+      <SocialHead
+        :title="tag ? `AutoTube blog posts with tag ${tag}` : 'Autotube Blog' "
+        :description="tag ? `Read latest AutoTube blog posts about ${tag}` : 'Read latest AutoTube blog posts'"
+      />
+      <h1 class="mb-2">
+        Posts <span v-if="tag"> with tag #{{ tag }} </span>
+      </h1>
       <ul class="post-list">
         <li v-for="post in articles" :key="post.slug">
           <time :datetime="post.createdAt" class="body-2"> {{ formatDate(post.createdAt) }}</time>
@@ -12,14 +18,18 @@
       </ul>
     </div>
     <article v-else>
+      <SocialHead
+        :title="article.title"
+        :description="article.description"
+      />
       <header class="mb-6">
         <h1 class="mt-2" style="line-height: 50px">
           {{ article.title }}
         </h1>
         <div class="body-2">
           <time class="mt-0 pt-0 mr-3" :datetime="article.createdAt"> {{ formatDate(article.createdAt) }}</time>
-          <span v-for="tag in article.tags" :key="tag" class="mr-1 body-2">
-            <NuxtLink key="tag" :to="'/blog/tag/' + tag">#{{ tag }}</NuxtLink>
+          <span v-for="artTag in article.tags" :key="artTag" class="mr-1 body-2">
+            <NuxtLink :to="'/blog/tag/' + artTag">#{{ artTag }}</NuxtLink>
           </span>
         </div>
       </header>
@@ -72,9 +82,7 @@ export default {
     // tag
     } else if (patMatchSplit.length === 2 && patMatchSplit[0] === 'tag') {
       const tag = patMatchSplit[1]
-      console.log('tag', tag)
       const articles = await $content('blog').where({ tags: { $contains: tag } }).sortBy('createdAt', 'desc').fetch()
-      console.log(articles)
       if (articles.length === 0) {
         error({ statusCode: 404, message: 'No articles found' })
         return

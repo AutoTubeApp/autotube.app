@@ -50,7 +50,7 @@
         v-tooltip="'Follow us on twitter'"
         icon
         color="primary"
-        href="https://twitter.com/autotube_app"
+        href="https://twitter.com/autotubeVideo"
         target="_blank"
       >
         <v-icon>mdi-twitter</v-icon>
@@ -86,7 +86,7 @@
       app
     >
       <v-col cols="12" class="text-center">
-        <span> &copy; {{ new Date().getFullYear() }} <a href="https://dpp.st">dpp.st</a> </span>
+        <span class="body-2"> &copy; {{ new Date().getFullYear() }} <a href="https://dpp.st">dpp.st</a> </span>
       </v-col>
     </v-footer>
   </v-app>

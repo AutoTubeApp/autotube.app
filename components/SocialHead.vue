@@ -17,11 +17,19 @@ export default {
     },
     image: {
       type: String,
-      default: 'https://autotube.app/card.png'
+      default: ''
     }
   },
-
   head () {
+    let ogImage = ''
+    if (this.$route.path === '/') {
+      ogImage = 'https://autotube.app/card.png'
+    } else if (this.image === '') {
+      ogImage = `https://og-img.ld83.com/img/${Buffer.from(this.title, 'utf8').toString('base64')}/${Buffer.from('https://autotube.app' + this.$route.fullPath, 'utf8').toString('base64')}`
+    } else {
+      ogImage = this.image
+    }
+
     return {
       meta: [
         {
@@ -42,7 +50,7 @@ export default {
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          content: this.image
+          content: ogImage
         },
         {
           hid: 'twitter:image:alt',
@@ -62,12 +70,12 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.image
+          content: ogImage
         },
         {
           hid: 'og:image:secure_url',
           property: 'og:image:secure_url',
-          content: this.image
+          content: ogImage
         },
         {
           hid: 'og:image:alt',

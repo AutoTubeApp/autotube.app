@@ -1,8 +1,9 @@
 ---
 index: 2
+category: Get Started
 title: Publish a video with AutoTube
+dLink: Publish a video
 description: how to publish a video on the internet with AutoTube.
-prev: installation
 ---
 # Publish a video
 

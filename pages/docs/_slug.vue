@@ -1,27 +1,31 @@
 <template>
   <div>
     <v-container v-if="toc && article">
-      <SocialHead :title="'Autotube - ' + article.title" :description="article.description" />
+      <SocialHead
+        :title="article.title"
+        :description="article.description"
+        :image="article.image"
+      />
       <v-row>
         <v-col
           id="toc"
           cols="12"
           md="3"
           lg="2"
-          class="pa-1 pt-3 mr-2 pr-3 d-xs-flex d-sm-block"
+          class="pa-1 pt-6 mr-5 d-xs-flex d-sm-block"
         >
-          <v-list-item
-            v-for="t in toc"
-            :key="t.slug"
-            nuxt
-            :to="t.path"
-          >
-            <v-list-item-content>
-              <v-list-item-title class="text-capitalize">
-                {{ t.slug }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          <ul>
+            <li v-for="(data, cat) in toc" :key="cat.key" class="mb-3">
+              {{ cat }}
+              <ul>
+                <li v-for="(doc) in data" :key="doc.slug" class="ml-2 pt-1">
+                  <NuxtLink :to="'/docs/' + doc.slug" :class="{'dark': $vuetify.theme.dark}">
+                    {{ doc.dLink }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </v-col>
         <v-col>
           <nuxt-content :document="article" />
@@ -58,10 +62,17 @@ export default {
     }
     const article = await $content('docs', params.slug).fetch()
 
-    const toc = await $content('docs')
-      .only(['slug', 'path'])
+    // get all the articles summary
+    const articles = await $content('docs')
+      .only(['slug', 'path', 'category', 'dLink'])
       .sortBy('index')
       .fetch()
+    // get all the categories
+    const categories = articles.map(item => item.category).filter((item, index, array) => array.indexOf(item) === index)
+    const toc = { }
+    for (const cat of categories) {
+      toc[cat] = articles.filter(item => item.category === cat)
+    }
     return { article, toc }
   },
 
@@ -83,44 +94,43 @@ export default {
         }
       ]
     }
-  },
-  mounted () {
   }
-
 }
 </script>
 
-<style>
+<style scoped>
+
 #toc {
   border-right-style: solid;
   border-right-color: rgba(25, 118, 210, 0.3);
   border-right-width: 1px;
 }
 
-.nuxt-content h2 {
-  padding-bottom: .5rem;
-  margin-bottom: 2rem;
-  margin-top: 1.5rem;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(25, 118, 210, 0.3);
-  border-bottom-style: solid;
+a {
+  text-decoration: none;
 }
 
-.nuxt-content pre {
-  background-color: #fdf6ef;
+a:hover {
+  text-decoration: underline;
 }
 
-.nuxt-content img {
-  margin-bottom: 1rem;
-  max-width: 800px;
+a.dark:hover {
+  color: #f48828;
+  text-decoration: none;
 }
 
-.nuxt-content blockquote
-{
-  font-style: normal;
-  margin-left: 22px;
-  border-left: 4px solid #e5671e;
-  padding-left: 8px;
+a.dark.nuxt-link-exact-active {
+  color: #f48828;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li.sub-menu {
+  margin-left: 0.5rem;
 }
 
 </style>

@@ -1,9 +1,9 @@
 ---
 index: 1
+category: Get Started
+dLink: Installation
 title: How to install AutoTube
 description: Install AutoTube and start publishing your videos online.
-prev: introduction
-next: configuration
 ---
 
 # Install AutoTube
