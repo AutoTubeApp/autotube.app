@@ -77,7 +77,7 @@
     <v-main>
       <v-container id="main">
         <Alert />
-        <nuxt keep-alive />
+        <nuxt />
       </v-container>
     </v-main>
 

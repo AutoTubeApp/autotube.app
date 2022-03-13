@@ -53,7 +53,9 @@ export default {
     crawler: true,
     async routes () {
       const { $content } = require('@nuxt/content')
-      const files = await $content('docs').only(['path']).fetch()
+      const docFiles = await $content('docs').only(['path']).fetch()
+      const blogFiles = await $content('blog').only(['path']).fetch()
+      const files = docFiles.concat(blogFiles)
       return files.map(file => file.path === '/index' ? '/' : file.path)
     }
   },

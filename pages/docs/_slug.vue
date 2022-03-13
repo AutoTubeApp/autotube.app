@@ -88,7 +88,6 @@ export default {
   }
 
 }
-
 </script>
 
 <style>
@@ -98,14 +97,6 @@ export default {
   border-right-width: 1px;
 }
 
-.nuxt-content {
-  color: #E3F2FD;
-}
-
-.nuxt-content h1 {
-  margin-bottom: .8rem;
-}
-
 .nuxt-content h2 {
   padding-bottom: .5rem;
   margin-bottom: 2rem;
@@ -113,13 +104,6 @@ export default {
   border-bottom-width: 1px;
   border-bottom-color: rgba(25, 118, 210, 0.3);
   border-bottom-style: solid;
-}
-
-.nuxt-content a {
-}
-
-.nuxt-content ul {
-  margin-bottom: 0.8rem;
 }
 
 .nuxt-content pre {
