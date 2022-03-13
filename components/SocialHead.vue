@@ -25,7 +25,9 @@ export default {
     if (this.$route.path === '/') {
       ogImage = 'https://autotube.app/card.png'
     } else if (this.image === '') {
-      ogImage = `https://og-img.ld83.com/img/${Buffer.from(this.title, 'utf8').toString('base64')}/${Buffer.from('https://autotube.app' + this.$route.fullPath, 'utf8').toString('base64')}`
+      const title = Buffer.from(this.title).toString('base64')
+      const footer = Buffer.from('https://autotube.app' + this.$route.fullPath).toString('base64')
+      ogImage = `https://og-img.ld83.com/img/${title}/${footer}`
     } else {
       ogImage = this.image
     }
