@@ -8,22 +8,6 @@
         </div>
       </v-col>
     </v-row>
-    <!--    <v-row justify="center" class="d-flex">
-      <v-col
-        cols="12"
-        md="8"
-      >
-        <v-alert
-          class="pt-6 text-center justify-center text-sm-h6"
-          border="top"
-          colored-border
-          type="warning"
-          elevation="8"
-        >
-          <span>🍾🍾🍾 AutoTube now integrates full support of IPFS 🍾🍾🍾</span>
-        </v-alert>
-      </v-col>
-    </v-row>-->
     <v-row>
       <Download />
     </v-row>
@@ -46,9 +30,6 @@
           <li>100% Free and (soon) fully Open Source.</li>
           <li>More and more to come. Stay Tuned !</li>
         </ul>
-        <h2 class="mt-4">
-          Watch the demo (created with AutoTube):
-        </h2>
       </v-col>
     </v-row>
     <!-- demo -->
@@ -72,7 +53,7 @@
     <!--- end demo -->
 
     <!--- french demo -->
-    <v-row lass="d-flex">
+    <!--    <v-row lass="d-flex">
       <v-col
         class=""
         cols="12"
@@ -98,7 +79,7 @@
           allowfullscreen
         />
       </v-col>
-    </v-row>
+    </v-row>-->
     <!--- end french demo -->
   </v-container>
 </template>
