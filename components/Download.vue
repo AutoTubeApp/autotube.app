@@ -69,8 +69,8 @@
 </template>
 
 <script>
-import { getOs } from '@/lib/getOs'
 import { mapActions } from 'vuex'
+import { getOs } from '@/lib/getOs'
 
 const repoBaseURL = 'https://dppst.s3-website.fr-par.scw.cloud/autotube/'
 const wkGetVersion = 'https://autotube-get-version.dppst.workers.dev/'
