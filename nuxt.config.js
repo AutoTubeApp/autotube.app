@@ -49,6 +49,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxt/content'
   ],
+  // routes: [],
   generate: {
     crawler: true,
     async routes () {

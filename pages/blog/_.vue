@@ -51,7 +51,7 @@ export default {
     error
   }) {
     // index | slug | tag
-    const isIndex = params.pathMatch === ''
+    const isIndex = params.pathMatch === 'index'
     const patMatchSplit = params.pathMatch.split('/')
 
     if (isIndex) {
@@ -95,25 +95,6 @@ export default {
     } else {
       error({ statusCode: 404, message: 'Not found' })
     }
-
-    /*    const path = `/${ctx.params.pathMatch || 'index'}`
-    console.log('path', path)
-
-    console.log('ctx.params.slug', ctx.params)
-    console.log('ctx.route.path', ctx.route.path)
-
-    const { $content } = ctx
-
-    const nbArticles = (await $content('blog', { deep: true }).only([]).fetch()).length
-    console.log('nbArticles', nbArticles)
-    const article = await $content('blog', ctx.params.slug, { deep: true }).fetch()
-    console.log(article)
-
-    const toc = await $content('blog')
-      .only(['slug', 'path'])
-      .sortBy('index')
-      .fetch()
-    return { article, toc } */
   },
 
   data () {

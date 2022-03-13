@@ -22,7 +22,7 @@
         <span>Documentation</span>
       </nuxtLink>
 
-      <nuxtLink class="mr-3 no-decoration" :class="{'nuxt-link-active': $route.name.includes('blog'), 'dark': $vuetify.theme.dark}" to="/blog/">
+      <nuxtLink class="mr-3 no-decoration" :class="{'nuxt-link-active': $route.name.includes('blog'), 'dark': $vuetify.theme.dark}" to="/blog/index">
         <span>Blog</span>
       </nuxtLink>
 
