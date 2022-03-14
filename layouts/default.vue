@@ -3,37 +3,44 @@
     <v-app-bar
       app
     >
-      <nuxtLink to="/" exact class="d-flex no-decoration">
+      <nuxtLink v-if="!$vuetify.breakpoint.xs" to="/" exact class="no-decoration">
         <v-icon
-          class="mr-2"
+          class="pr-lg-3 pr-sm-1"
           large
           color="#2894f4"
         >
           mdi-youtube
         </v-icon>
       </nuxtLink>
-      <v-toolbar-title class="mr-10 text--white" v-text="title" />
-
-      <nuxtLink to="/" exact class="mr-3 no-decoration" :class="{'dark': $vuetify.theme.dark}">
-        <span>Home</span>
-      </nuxtLink>
-
-      <nuxtLink class="mr-3 no-decoration" :class="{'nuxt-link-active': $route.name.includes('docs'), 'dark': $vuetify.theme.dark}" to="/docs/introduction">
-        <span>Documentation</span>
-      </nuxtLink>
-
-      <nuxtLink class="mr-3 no-decoration" :class="{'nuxt-link-active': $route.name.includes('blog'), 'dark': $vuetify.theme.dark}" to="/blog/index">
-        <span>Blog</span>
-      </nuxtLink>
-
-      <a
-        class="no-decoration"
-        :class="{'dark': $vuetify.theme.dark}"
-        href="https://github.com/AutoTubeApp/autotube.support/issues/new/choose"
-        target="_blank"
-      >
-        <span>Support</span>
-      </a>
+      <v-app-bar-nav-icon v-if="$vuetify.breakpoint.xs" @click="drawer = true" />
+      <nav v-if="!$vuetify.breakpoint.xs" class="d-flex align-center">
+        <v-toolbar-title class="mr-8 text--white" v-text="title" />
+        <nuxtLink to="/" exact class="mr-3 no-decoration">
+          <span>Home</span>
+        </nuxtLink>
+        <nuxtLink
+          class="mr-3 no-decoration"
+          :class="{'nuxt-link-active': $route.name.includes('docs')}"
+          to="/docs/introduction"
+        >
+          <span>Documentation</span>
+        </nuxtLink>
+        <nuxtLink
+          class="mr-3 no-decoration"
+          :class="{'nuxt-link-active': $route.name.includes('blog')}"
+          to="/blog/index"
+        >
+          <span>Blog</span>
+        </nuxtLink>
+        <a
+          class="no-decoration"
+          :class="{'dark': $vuetify.theme.dark}"
+          href="https://github.com/AutoTubeApp/autotube.support/issues/new/choose"
+          target="_blank"
+        >
+          <span>Support</span>
+        </a>
+      </nav>
 
       <v-spacer />
       <v-btn
@@ -74,6 +81,68 @@
         <v-icon>mdi-white-balance-sunny</v-icon>
       </v-btn>
     </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group>
+          <!-- home -->
+          <nuxtLink to="/" exact class="no-decoration">
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-home</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>
+                <span>Home</span>
+              </v-list-item-title>
+            </v-list-item>
+          </nuxtLink>
+          <!-- docs -->
+          <nuxtLink
+            class="no-decoration"
+            to="/docs/introduction"
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-book-open-page-variant</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Documentation</v-list-item-title>
+            </v-list-item>
+          </nuxtLink>
+          <!-- blog -->
+          <nuxtLink
+            class="no-decoration"
+            to="/blog"
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-post-outline</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Blog</v-list-item-title>
+            </v-list-item>
+          </nuxtLink>
+          <!-- support -->
+          <a
+            class="no-decoration"
+            href="https://github.com/AutoTubeApp/autotube.support/issues/new/choose"
+            target="_blank"
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>mdi-lifebuoy</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Support</v-list-item-title>
+            </v-list-item>
+          </a>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
       <v-container id="main">
         <Alert />
@@ -99,7 +168,8 @@ export default {
   components: { Alert },
   data () {
     return {
-      title: 'AutoTube'
+      title: 'AutoTube',
+      drawer: false
     }
   },
   methods: {
@@ -112,12 +182,16 @@ export default {
 
 <style scoped>
 
-a.dark {
+.theme--dark .v-navigation-drawer {
+  background-color: #05131f;
+}
+
+.theme--dark a {
   color: white;
 }
 
 #main {
-  max-width: 1200px!important;
+  max-width: 1200px !important;
 }
 
 </style>
