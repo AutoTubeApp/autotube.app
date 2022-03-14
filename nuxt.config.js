@@ -50,6 +50,27 @@ export default {
     '@nuxt/content'
   ],
   // routes: [],
+  router: {
+    extendRoutes (routes, resolve) {
+      routes.push({
+        name: 'blog-home',
+        path: '/blog',
+        component: resolve(__dirname, 'pages/blog/_.vue')
+      })
+
+      routes.push({
+        name: 'blog-tag',
+        path: '/blog/tag/:_tag',
+        component: resolve(__dirname, 'pages/blog/_.vue')
+      })
+
+      routes.push({
+        name: 'doc-home',
+        path: '/doc',
+        component: resolve(__dirname, 'pages/docs/_slug.vue')
+      })
+    }
+  },
   generate: {
     crawler: true,
     async routes () {

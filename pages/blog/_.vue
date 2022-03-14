@@ -47,8 +47,14 @@ export default {
     error
   }) {
     // index | slug | tag
-    const isIndex = params.pathMatch === 'index'
-    const patMatchSplit = params.pathMatch.split('/')
+    console.log(params.pathMatch)
+    const isIndex = params.pathMatch === undefined
+    console.log('isIndex', isIndex)
+    let patMatchSplit = []
+    if (!isIndex) {
+      patMatchSplit = params.pathMatch?.split('/')
+    }
+    console.log(patMatchSplit)
 
     if (isIndex) {
       // get articles list
@@ -180,6 +186,12 @@ $blue: #2196f3;
     text-decoration: underline;
   }
 
+  a.post-title  {
+    vertical-align: middle;
+    font-size: 1.3rem;
+    margin-left: 0.3rem;
+  }
+
   blockquote {
     border-left: 5px solid $blue;
     padding-left: 1rem;
@@ -187,6 +199,11 @@ $blue: #2196f3;
     padding-top: .8rem;
     margin: 0.5rem 1rem;
     font-style: italic;
+  }
+
+  h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   ul.post-list {
@@ -204,11 +221,6 @@ $blue: #2196f3;
     color: #999;
   }
 
-  a.post-title  {
-    vertical-align: middle;
-    font-size: 1.3rem;
-    margin-left: 0.3rem;
-  }
 }
 
 .theme--dark #blog {

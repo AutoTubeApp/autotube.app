@@ -43,22 +43,8 @@ export default {
     params,
     redirect
   }) {
-    // const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://autotube.app'
-    // const server = 'http://localhost:3000'
-    const server = ''
-
     if (!params.slug) {
-      try {
-        await redirect(302, `${server}/docs/introduction`)
-        return
-      } catch (e) {
-        return
-        // do nothing is to avoid error
-        // a0417b4.js:2 Uncaught (in promise) Error: ERR_REDIRECT
-        // le problème c'est qu'on demande au routeur de venir ici pour ensuite
-        // faire un redirect "direct"
-        // push('/route') && redirect
-      }
+      params.slug = 'introduction'
     }
     const article = await $content('docs', params.slug).fetch()
 

@@ -28,7 +28,7 @@
         <nuxtLink
           class="mr-3 no-decoration"
           :class="{'nuxt-link-active': $route.name.includes('blog')}"
-          to="/blog/index"
+          to="/blog"
         >
           <span>Blog</span>
         </nuxtLink>
