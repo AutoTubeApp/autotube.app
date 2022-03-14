@@ -9,7 +9,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <Download />
+      <Download v-if="!$vuetify.breakpoint.xs" />
     </v-row>
     <v-row lass="d-flex">
       <v-col
