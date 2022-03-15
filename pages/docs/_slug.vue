@@ -55,11 +55,14 @@ export default {
       .fetch()
     // get all the categories
     const categories = articles.map(item => item.category).filter((item, index, array) => array.indexOf(item) === index)
-    const toc = { }
+    const toc = {}
     for (const cat of categories) {
       toc[cat] = articles.filter(item => item.category === cat)
     }
-    return { article, toc }
+    return {
+      article,
+      toc
+    }
   },
 
   data () {
@@ -69,7 +72,9 @@ export default {
     }
   },
   head () {
-    if (this.article === null) { return }
+    if (this.article === null) {
+      return
+    }
     return {
       title: this.article ? this.article.title : '',
       meta: [
@@ -115,6 +120,7 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 li.sub-menu {
   margin-left: 0.5rem;
 }

@@ -57,7 +57,7 @@
         v-tooltip="'Follow us on twitter'"
         icon
         color="primary"
-        href="https://twitter.com/autotubeVideo"
+        href="https://twitter.com/AutoTubeVideo"
         target="_blank"
       >
         <v-icon>mdi-twitter</v-icon>

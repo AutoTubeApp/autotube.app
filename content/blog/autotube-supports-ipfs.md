@@ -5,8 +5,6 @@ createdAt: '2022-03-13T09:37:29.668Z'
 tags:
 - ipfs
 - decentralization
-- video
-
 ---
 
 Since versions 0.2.0, AutoTube supports IPFS. That means that:   

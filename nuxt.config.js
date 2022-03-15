@@ -82,7 +82,11 @@ export default {
     }
   },
   content: {
-  // Options
+    markdown: {
+      prism: {
+        theme: '@assets/css/prism.css'
+      }
+    }
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
