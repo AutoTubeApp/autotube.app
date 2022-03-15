@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="docs">
     <v-container v-if="toc && article">
       <SocialHead
         :title="article.title"
@@ -64,7 +64,6 @@ export default {
       toc
     }
   },
-
   data () {
     return {
       toc: null,
@@ -89,40 +88,50 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 
-#toc {
-  border-right-style: solid;
-  border-right-color: rgba(25, 118, 210, 0.3);
-  border-right-width: 1px;
-}
+#docs {
+  #toc {
+    border-right-style: solid;
+    border-right-color: rgba(25, 118, 210, 0.3);
+    border-right-width: 1px;
+  }
 
-a {
-  text-decoration: none;
-}
+  a {
+    text-decoration: none;
+  }
 
-a:hover {
-  text-decoration: underline;
-}
+  a:hover {
+    text-decoration: underline;
+  }
 
-a.dark:hover {
-  color: #f48828;
-  text-decoration: none;
-}
+  a.dark:hover {
+    color: #f48828;
+    text-decoration: none;
+  }
 
-a.dark.nuxt-link-exact-active {
-  color: #f48828;
-  font-weight: normal;
-}
+  a.dark.nuxt-link-exact-active {
+    color: #f48828;
+    font-weight: normal;
+  }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  h2 {
+    margin-top: 1rem;
+  }
 
-li.sub-menu {
-  margin-left: 0.5rem;
+  h3 {
+    margin-top: 0.2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li.sub-menu {
+    margin-left: 0.5rem;
+  }
 }
 
 </style>
