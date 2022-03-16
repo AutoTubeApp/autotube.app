@@ -8,23 +8,23 @@ description: This tutorial will walk you through setting up an IPFS server for t
 # Set up an IPFS server for AutoTube
 
 In this tutorial, we will set up an IPFS server for the AutoTube video sharing application.  
-That means that we will set up an IPFS node and then set up a reverse proxy web server which will handle and secure your node.
+First we will set up an IPFS node and then set up a reverse proxy web server which will handle public requests and secure your node.
 
 ## Requirements
-- A linux machine which is publicly accessible through the internet.  
+- A linux server (bare metal or instance) which is publicly accessible through the internet.  
   For example an [Amazon EC2](https://aws.amazon.com/ec2/). In my case i will set up a [Scaleway instance](https://www.scaleway.com/en/).
-- A domain name. For this tutorial i will take `ld83.com`.
+- A domain name. For this tutorial I will use `ld83.com`.
 - Some knowledge on Linux administration (really just the basics).
 
 ## Set up the Linux box
 The first question you have to answer is: what kind of instance do i need ?  
-It will only depend on the amount of storage you need to store your videos.
+It will only depend on the amount of storage you need for your videos.
 Note that some providers allow you to easily upgrade your storage capacity afterwards. 
 
-For this tutorial, we will use [Ubuntu](https://www.ubuntu.com/) Linux distribution version 20.04 LTS so i encourage you to use the same distro/version even
-if this tutorial should be ok with other "Debian compatible" distributions .
+For this tutorial, we will use [Ubuntu](https://www.ubuntu.com/) Linux distribution version 20.04 LTS so i encourage you 
+to use the same distro/version even if this tutorial should be ok with other "Debian compatible" distributions .
 
-The first thing you have to do when your server is up is to be sure that it's up-to-date. 
+The first thing you have to do, when your server is up, is to be sure that it's up-to-date. 
 Connect to the server as root and run the following command:
 
 ```shell
@@ -32,7 +32,7 @@ apt-get update
 apt-get upgrade
 ```
 
-As we will need a user account to run the node, let's create one now:
+As we will need a user account to run the IPFS node, let's create one now:
 ```shell
 adduser -m ipfs
 ```
@@ -42,16 +42,16 @@ We also need to tweak UDP buffer size:
 sysctl -w net.core.rmem_max=2500000
 ```
 
-After updating your system, you should reboot your server:
+After updating your system, reboot your server:
 ```shell
 reboot && exit
 ```
 
 ## Set up the IPFS node
 ### Install IPFS
-At the time of this tutorial, current version of [IPFS](https://ipfs.io/) is 0.12.0, 
-check the [official documentation](http://docs.ipfs.io/install/command-line/#linux) to check if you have the latest version.  
-Download the latest version of IPFS and extract it:
+At the time of this tutorial, the current version of [IPFS](https://ipfs.io/) is 0.12.0, 
+check the [official documentation](http://docs.ipfs.io/install/command-line/#linux) to check the latest version.  
+Download IPFS and extract it:
 
 ```shell
 cd /tmp
@@ -65,7 +65,7 @@ tar -xvzf go-ipfs_v0.12.0_linux-amd64.tar.gz
 > x go-ipfs/LICENSE-MIT
 > x go-ipfs/README.md
 ```
-Change dir to `go-ipfs` and run the following command:
+Change dir to `go-ipfs` and install IPFS:
 ```shell
 cd go-ipfs
 bash install.sh
@@ -100,14 +100,15 @@ to get started, enter:
 ```
 ### Configure IPFS
 The next step is to configure the node.  
-The configuration file is located at `/home/ipfs/.ipfs/config`, it's a JSON file.  
+The configuration file is located at `/home/ipfs/.ipfs/config`. It's a JSON file.  
 Options are explained in the [official documentation](http://docs.ipfs.io/reference/config/).  
 To edit the configuration file, run the following command:
 ```shell
 nano /home/ipfs/.ipfs/config
 ```
 
-We will set the following options to allow the node to be accessed via using browsers (and browser based app like AutoTube which is built on top of Chrome vie  [electron](https://electronjs.org/)).  
+We will set the following options to allow the node to be accessed using browsers (and browser based application like 
+AutoTube which is built on top of Chrome via  [electron](https://electronjs.org/)).  
 
 Change***API.HTTPHeaders*** from:
 ```json
@@ -149,10 +150,8 @@ In the `Addresses.Swarm` array, add `"/ip4/0.0.0.0/tcp/4003/ws"` to the end of t
 ]
 ```
 
-For now that's all we need to do.  
-
 ### Make IPFS run as a service
-Now that we have configured the node, we need to make it run as a service.  
+Now that we have configured our IPFS node, we need to make it run as a service.  
 That's mean that it will be automatically started when the server is rebooted.  
 Exit ipfs user account:
 ```shell
@@ -185,13 +184,13 @@ Now we can start the service by running the following command:
 systemctl start ipfs
 ```
 We are done! Our IPFS node is now up and running 🍾
-Hum yes but we need to configure the node to be accessible from the outside.  
+Hum yes, but we need to configure the node to be accessible from the outside.  
 To do that, we will use [Caddy server](https://caddyserver.com/) as a reverse proxy.  
-But before, even if it's useless for now, here is how tu update your IPFS node to the latest version:
+But before, even if it's useless for now, here is how to update your IPFS node to the latest version:
 
 ### How to update the IPFS node ?
 To update the IPFS node, we will use [ipfs-update](http://docs.ipfs.io.ipns.localhost:8082/install/ipfs-updater/#install-update) binary.  
-First, we need to install it:
+First, install it:
 ```shell
 cd /tmp
 wget https://dist.ipfs.io/ipfs-update/v1.7.1/ipfs-update_v1.7.1_linux-amd64.tar.gz
@@ -216,7 +215,9 @@ With `vx.y.z` being the version you want to update to.
 ## Install and configure Caddy as a reverse proxy
 [Caddy](https://caddyserver.com/) is a lightweight HTTP/2 web server which can act as a reverse proxy.  
 What's the purpose of a reverse proxy ?  
-A reverse proxy is a server that forwards requests from internet to your local IPFS node. It will allow you to access your IPFS node from the internet.  
+A reverse proxy is a server that forwards requests from internet to your local IPFS node.
+It will allow you to access your IPFS node from the internet.
+
 ### Install Caddy
 To install Caddy, run the following command as root:
 ```shell
@@ -229,13 +230,13 @@ apt update
 apt install caddy
 ```
 ### Configure Caddy
-At first, as we will protect the API access from the outside, we will need to create a *user* and *password* for the API access.  
-for the example, we will use the following credentials:
+At first, as we will protect the API access from the outside, we will need to create a *user* and a *password* for the API access.  
+For this tutorial, we will use the following credentials:
 ```text
 user: admin
 password: adminPassword
 ```
-As we can't put the password as plain text in the config file we will hash it : 
+As we can't put plain text password in the config file we will hash it : 
 ```shell
 caddy hash-password --plaintext adminPassword
 ```
@@ -243,17 +244,19 @@ This command will output something like this:
 ```text
 JDJhJDE0JFpOdWIvaFBxSnc1NUZkMzIyenNpeC50VjhKYk9WM1o5WlJnbDdOTDloL2RxQVZpbzh1ZnRP
 ```
-So your credentials string will be, those that we will use in our config file will be:
+Your credentials string will be:
 ```text
 admin JDJhJDE0JFpOdWIvaFBxSnc1NUZkMzIyenNpeC50VjhKYk9WM1o5WlJnbDdOTDloL2RxQVZpbzh1ZnRP
 ```
-Then to configure Caddy, we need to edit the `/etc/caddy/Caddyfile` file:
+To configure Caddy, we need to edit the `/etc/caddy/Caddyfile` file:
 ```shell
 nano /etc/caddy/Caddyfile
 ```
 Remove all the content and paste the following script:  
-***Warning***: you need to change `ipfs.ld83.com` to the hostname of your IPFS node. And be sure that this hostname resolve to the public IP address of your IPFS node.      
+***Warning***: you need to change `ipfs.ld83.com` to the hostname of your IPFS node. And make sure that this hostname 
+resolves to the public IP address of your IPFS node.      
 ***Warning 2***: change YOUR_CREDENTIALS_HERE to the credentials string you have created above.
+
 ```caddy
 ipfs.ld83.com {
         # matches all requests excepts OPTIONS
@@ -302,32 +305,38 @@ Then we need to restart Caddy:
 systemctl restart caddy
 ```
 
-If everything went well, you should open your browser and go to `https://YOUR_HOSTNAME/webui` (ex: `https://ipfs.ld83.com/webui`) 
-and you should be able to access the web UI after logging in with the credentials you have created.    
+If everything went well, you can open your browser and go to `https://YOUR_HOSTNAME/webui` (ex: `https://ipfs.ld83.com/webui`) 
+, after logging in with the credentials you have created, your browser will display the IPFS node dashboard.    
 
 ## Public Gateway or not ?
-With the current configuration, anyone can use the `/ipfs/` path to access any IPFS ressource, your node act as a public gateway.  
+With the current configuration, anyone can use the `/ipfs/` path of your IPFS node to access any IPFS ressource, 
+your node act as a **public** gateway.  
 It's up to you to decide if you want to keep your gateway public or not.  
-But note that if you want to make it private, you need to be able to serve, at least, the video you have uploaded.  
-Keep in mind that, your `base url` in your `upload target` configuration for AutoTube will be your public gateway aka `https://YOUR_HOSTNAME/`. 
-So this URL must be accessible from the outside.   
-There is an option in the IPFS config for this purpose, it's the `Gateway.NoFetch` option. If you enable this option, 
-your gateway will serve only the files you have uploaded or pinned on it.
+But note that if you want to make it private, you need to be able to serve, at least, the videos you will upload.  
+Keep in mind that your `base url` in your `upload target` AutoTube configuration will be your public gateway 
+aka `https://YOUR_HOSTNAME/`. 
+So this URL must be accessible from the outside if you want to share your videos.   
+There is an option in the IPFS config for this purpose, it's the `Gateway.NoFetch` option.  
+If you enable this option, your gateway will serve only the files you have uploaded or pinned on it.
 
-### How to keep webui if Gateway.NoFetch is true ?
+### How to keep webui up to date if Gateway.NoFetch is true ?
 The path `/webui` is in fact an alias to a true IPFS path. 
 So if you want to keep the webui available, you need to pin the IPFS address corresponding to `/webui` path.   
 To do so, go to the `/webui` path, the URL in the browser will change to something like:  
 `https://ipfs.ld83.com//ipfs/bafybeihcyruaeza7uyjd6ugicbcrqumejf6uf353e5etdkhotqffwtguva/#/welcome`
 
-Where `bafybeihcyruaeza7uyjd6ugicbcrqumejf6uf353e5etdkhotqffwtguva` is the IPFS address of the `/webui` path.
+Where `bafybeihcyruaeza7uyjd6ugicbcrqumejf6uf353e5etdkhotqffwtguva` is the IPFS address, it's CID, of the `/webui` path.
 
-Then you can pin this IPFS address with the following command (to run as ipfs user):
+You can pin this IPFS CID with the following command (to run as ipfs user):
 ```shell
 ipfs pin add bafybeihcyruaeza7uyjd6ugicbcrqumejf6uf353e5etdkhotqffwtguva
 ```
+
+Pinning an IPFS CID tels IPFS that you want to keep the corresponding content in your node.    
+
 Now you can set the `Gateway.NoFetch` option to `true` in your IPFS config file, and you will keep your webui working.  
-If, if the future, you want to update your webui, you just need to pin the new version of the webui by reproducing the previous steps.
+If, if the future, you want to update your webui, you just need to pin the new version of the webui by reproducing the 
+previous steps.
 
 
 
