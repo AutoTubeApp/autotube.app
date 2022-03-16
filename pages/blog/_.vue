@@ -14,6 +14,9 @@
           <NuxtLink class="post-title" :to="'/blog/' + post.slug">
             {{ post.title }}
           </NuxtLink>
+          <p class="">
+            {{ post.description }}
+          </p>
         </li>
       </ul>
     </div>
@@ -47,26 +50,17 @@ export default {
     error
   }) {
     // index | slug | tag
-    console.log(params.pathMatch)
     const isIndex = params.pathMatch === undefined
-    console.log('isIndex', isIndex)
     let patMatchSplit = []
     if (!isIndex) {
       patMatchSplit = params.pathMatch?.split('/')
     }
-    console.log(patMatchSplit)
 
+    // index
     if (isIndex) {
       // get articles list
-      // filter by tag ?
-      let where = {}
-      const tag = query.tag
-      if (query.tag) {
-        where = { tags: { $contains: tag } }
-      }
-      const articles = await $content('blog').only(['title', 'slug', 'createdAt']).where(where).sortBy('createdAt', 'desc').fetch()
+      const articles = await $content('blog').only(['title', 'description', 'slug', 'createdAt']).sortBy('createdAt', 'desc').fetch()
       return {
-        tag,
         isIndex,
         articles,
         nbArticles: articles.length
@@ -89,7 +83,7 @@ export default {
       // tag
     } else if (patMatchSplit.length === 2 && patMatchSplit[0] === 'tag') {
       const tag = patMatchSplit[1]
-      const articles = await $content('blog').where({ tags: { $contains: tag } }).sortBy('createdAt', 'desc').fetch()
+      const articles = await $content('blog').where({ tags: { $contains: tag } }).only(['title', 'description', 'slug', 'createdAt']).sortBy('createdAt', 'desc').fetch()
       if (articles.length === 0) {
         error({
           statusCode: 404,
