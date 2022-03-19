@@ -81,7 +81,6 @@
         <v-icon>mdi-white-balance-sunny</v-icon>
       </v-btn>
     </v-app-bar>
-
     <v-navigation-drawer
       v-model="drawer"
       absolute
@@ -154,18 +153,23 @@
       absolute
       app
     >
-      <v-col cols="12" class="text-center">
-        <span class="body-2"> &copy; {{ new Date().getFullYear() }} <a href="https://dpp.st">dpp.st</a> </span>
+      <v-col cols="12" class="text-center body-2">
+        &copy; {{ new Date().getFullYear() }} <a href="https://dpp.st">dpp.st</a> -
+        <nuxt-link to="/cookie">
+          Cookie Policy
+        </nuxt-link>
       </v-col>
     </v-footer>
+    <PrivacyConsent />
   </v-app>
 </template>
 
 <script>
 import Alert from '@/components/Alert'
+import PrivacyConsent from '@/components/PrivacyConsent'
 
 export default {
-  components: { Alert },
+  components: { Alert, PrivacyConsent },
   data () {
     return {
       title: 'AutoTube',
