@@ -47,8 +47,9 @@
                     class="white--text mb-3 mr-2 mt-xl-3 mr-xl-4 text-right"
                     color="primary"
                     :href="card.link"
+                    @click="sendDownloadEventToGa(card.os)"
                   >
-                    Download <span v-if="displayExtraBtnText && $vuetify.breakpoint.name !== 'md'"> {{ card.btnText }} </span></v-btn>
+                    Download <span v-if="displayExtraBtnText && $vuetify.breakpoint.name !== 'md'"> for {{ card.os }} </span></v-btn>
                 </span>
               </v-col>
             </v-row>
@@ -92,21 +93,21 @@ export default {
           src: '/img/apple.svg',
           filename: 'autotube.dmg',
           link: '',
-          btnText: 'for Mac',
+          os: 'Mac',
           selected: true
         },
         windows: {
           src: '/img/windows.svg',
           filename: 'autotube-setup.exe',
           link: '',
-          btnText: 'for Windows',
+          os: 'Windows',
           selected: false
         },
         linux: {
           src: '/img/linux.svg',
           filename: 'autotube.AppImage',
           link: '',
-          btnText: 'for Linux',
+          os: 'Linux',
           selected: false
         }
       }
@@ -124,6 +125,15 @@ export default {
 
   methods: {
     ...mapActions(['alertShow']),
+    // send event to GA
+    sendDownloadEventToGa (os) {
+      this.$gtag.event('download', {
+        event_category: 'download',
+        event_label: 'os',
+        value: os
+      })
+    },
+    // get last version
     async  getVersion () {
       await this.$axios.get(wkGetVersion)
         .then((r) => {
