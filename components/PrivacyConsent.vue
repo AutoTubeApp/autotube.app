@@ -1,12 +1,11 @@
 <template>
-  <v-row v-if="display" class="privacy-consent d-flex flex-row-reverse">
+  <v-row v-if="display" class="privacy-consent d-flex flex-row-reverse pr-1 pb-5">
     <v-col
       cols="11"
       sm="8"
       md="6"
       lg="4"
       xl="3"
-      class="mr-5 mb-9"
     >
       <v-card
         outlined

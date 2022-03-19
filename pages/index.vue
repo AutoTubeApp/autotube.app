@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pt-1 ">
+  <v-container class="pt-1">
     <SocialHead :title="title" :description="description" />
     <v-row justify="center" align="center" class="mt-0 mb-0">
       <v-col cols="12">
@@ -11,7 +11,7 @@
     <v-row>
       <Download v-if="!$vuetify.breakpoint.xs" />
     </v-row>
-    <v-row lass="d-flex">
+    <v-row>
       <v-col
         class=""
         cols="12"
@@ -33,54 +33,23 @@
       </v-col>
     </v-row>
     <!-- demo -->
-    <v-row v-resize="onResize" justify="center" class="mt-5 d-flex text-center">
-      <v-col
-        cols="12"
-        md="12"
+    <v-row class="mt-7 text-center">
+      <v-responsive
         class="text-center"
+        :aspect-ratio="16/9"
       >
         <iframe
-          :width="iframeWidth +'px'"
-          :height="iframeWidth * (9/16) + 'px'"
+          id="attPlayer"
+          width="90%"
+          height="90%"
           src="https://v.autotube.app/autotube-demo/embed.html"
           title="AutoTube demo"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
-      </v-col>
+      </v-responsive>
     </v-row>
-    <!--- end demo -->
-
-    <!--- french demo -->
-    <!--    <v-row lass="d-flex">
-      <v-col
-        class=""
-        cols="12"
-      >
-        <h2 class="mt-4">
-          AutoTube full presentation (in 🧀🍷🥖):
-        </h2>
-      </v-col>
-    </v-row>
-    <v-row v-resize="onResize" justify="center" class="mt-5 d-flex text-center">
-      <v-col
-        cols="12"
-        md="12"
-        class="text-center"
-      >
-        <iframe
-          :width="iframeWidth +'px'"
-          :height="iframeWidth * (9/16) + 'px'"
-          src="https://v.autotube.app/autotube/embed.html"
-          title="AutoTube presentation en français"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
-          allowfullscreen
-        />
-      </v-col>
-    </v-row>-->
-    <!--- end french demo -->
   </v-container>
 </template>
 
@@ -112,14 +81,6 @@ export default {
   },
   mounted () {
     setTimeout(this.onResize, 500)
-  },
-  methods: {
-    onResize () {
-      this.iframeWidth = 0.6 * window.innerWidth
-      if (this.iframeWidth > 800) {
-        this.iframeWidth = 800
-      }
-    }
   }
 }
 </script>
