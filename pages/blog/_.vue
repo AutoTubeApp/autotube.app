@@ -124,7 +124,7 @@ export default {
       ]
     }
   },
-  
+
   // Computed properties
   computed: {
     headDescription () {
