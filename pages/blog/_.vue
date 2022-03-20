@@ -1,16 +1,14 @@
 <template>
   <div id="blog">
-    <SocialHead
-      :title="headTitle"
-      :description="headDescription"
-    />
+    <SocialHead :title="headTitle" :description="headDescription" />
     <div v-if="isIndex || tag">
       <h1 class="mb-2">
         Posts <span v-if="tag"> with tag #{{ tag }} </span>
       </h1>
       <ul class="post-list">
         <li v-for="post in articles" :key="post.slug">
-          <time :datetime="post.createdAt" class="body-2"> {{ formatDate(post.createdAt) }}</time>
+          <time :datetime="post.createdAt" class="body-2">
+            {{ formatDate(post.createdAt) }}</time>
           <NuxtLink class="post-title" :to="'/blog/' + post.slug">
             {{ post.title }}
           </NuxtLink>
@@ -26,8 +24,13 @@
           {{ article.title }}
         </h1>
         <div class="body-2">
-          <time class="mt-0 pt-0 mr-3" :datetime="article.createdAt"> {{ formatDate(article.createdAt) }}</time>
-          <span v-for="artTag in article.tags" :key="artTag" class="mr-1 body-2">
+          <time class="mt-0 pt-0 mr-3" :datetime="article.createdAt">
+            {{ formatDate(article.createdAt) }}</time>
+          <span
+            v-for="artTag in article.tags"
+            :key="artTag"
+            class="mr-1 body-2"
+          >
             <NuxtLink :to="'/blog/tag/' + artTag">#{{ artTag }}</NuxtLink>
           </span>
         </div>
@@ -43,12 +46,7 @@
 export default {
   name: 'Blog',
 
-  async asyncData ({
-    $content,
-    params,
-    query,
-    error
-  }) {
+  async asyncData ({ $content, params, query, error }) {
     // index | slug | tag
     const isIndex = params.pathMatch === undefined
     let patMatchSplit = []
@@ -59,7 +57,10 @@ export default {
     // index
     if (isIndex) {
       // get articles list
-      const articles = await $content('blog').only(['title', 'description', 'slug', 'createdAt']).sortBy('createdAt', 'desc').fetch()
+      const articles = await $content('blog')
+        .only(['title', 'description', 'slug', 'createdAt'])
+        .sortBy('createdAt', 'desc')
+        .fetch()
       return {
         isIndex,
         articles,
@@ -83,7 +84,11 @@ export default {
       // tag
     } else if (patMatchSplit.length === 2 && patMatchSplit[0] === 'tag') {
       const tag = patMatchSplit[1]
-      const articles = await $content('blog').where({ tags: { $contains: tag } }).only(['title', 'description', 'slug', 'createdAt']).sortBy('createdAt', 'desc').fetch()
+      const articles = await $content('blog')
+        .where({ tags: { $contains: tag } })
+        .only(['title', 'description', 'slug', 'createdAt'])
+        .sortBy('createdAt', 'desc')
+        .fetch()
       if (articles.length === 0) {
         error({
           statusCode: 404,
@@ -112,6 +117,7 @@ export default {
       tag: null
     }
   },
+
   head () {
     return {
       title: this.headTitle,
@@ -156,14 +162,11 @@ export default {
       }
       return new Date(date).toLocaleDateString('en', options)
     }
-
   }
-
 }
 </script>
 
 <style lang="scss">
-
 $orange: #ff9800;
 $blue: #2196f3;
 
@@ -181,7 +184,7 @@ $blue: #2196f3;
     text-decoration: underline;
   }
 
-  a.post-title  {
+  a.post-title {
     vertical-align: middle;
     font-size: 1.3rem;
     margin-left: 0.3rem;
@@ -191,7 +194,7 @@ $blue: #2196f3;
     border-left: 5px solid $blue;
     padding-left: 1rem;
     padding-bottom: 0.1rem;
-    padding-top: .8rem;
+    padding-top: 0.8rem;
     margin: 0.5rem 1rem;
     font-style: italic;
   }
@@ -215,7 +218,6 @@ $blue: #2196f3;
     vertical-align: middle;
     color: #999;
   }
-
 }
 
 .theme--dark #blog {
@@ -231,7 +233,5 @@ $blue: #2196f3;
   blockquote {
     border-color: $orange;
   }
-
 }
-
 </style>
