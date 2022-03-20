@@ -160,7 +160,6 @@
         </nuxt-link>
       </v-col>
     </v-footer>
-    <PrivacyConsent />
   </v-app>
 </template>
 
