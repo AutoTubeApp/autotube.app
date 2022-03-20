@@ -27,7 +27,7 @@ export default {
     } else if (this.image === '') {
       const title = Buffer.from(this.title).toString('base64')
       const footer = Buffer.from('https://autotube.app' + this.$route.fullPath).toString('base64')
-      ogImage = `https://og-img.ld83.com/img/${title}/${footer}`
+      ogImage = `https://og-img.ld83.com/img/${title}/${footer}?tpl=att`
     } else {
       ogImage = this.image
     }
