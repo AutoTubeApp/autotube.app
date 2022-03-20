@@ -165,10 +165,10 @@
 
 <script>
 import Alert from '@/components/Alert'
-import PrivacyConsent from '@/components/PrivacyConsent'
+// import PrivacyConsent from '@/components/PrivacyConsent'
 
 export default {
-  components: { Alert, PrivacyConsent },
+  components: { Alert },
   data () {
     return {
       title: 'AutoTube',
